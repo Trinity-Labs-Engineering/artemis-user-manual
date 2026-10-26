@@ -18,11 +18,11 @@ Boosts can raise level, change tonal emphasis or push a following drive harder. 
 | --- | --- | --- |
 | Gain | Gain | Use a small increase for a solo lift, then check headroom in the following stage. |
 | Linear Power Booster | Boost | Start low and increase until the next drive responds more strongly. |
-| EHX Hogsfoot | Volume, Mix | Try a low Mix for added low-frequency weight, then match Volume to bypass. |
-| EHX Mole | Boost, Mix | Add a little Mix and raise Boost gradually for a fuller sound. |
+| Vintage Bass Booster I | Volume, Mix | Try a low Mix for added low-frequency weight, then match Volume to bypass. |
+| Vintage Bass Booster II | Boost, Mix | Add a little Mix and raise Boost gradually for a fuller sound. |
 | High Freq Booster I | Level | Start low for extra brightness ahead of a dark drive sound. |
 | High Freq Booster II | Intensity, Volume | Keep Intensity low initially, then balance Volume after choosing the emphasis. |
-| Rangemaster | Boost, Mix | Try a moderate Boost and restrained Mix into an overdriven amp stage. |
+| Rangefinder | Boost, Mix | Try a moderate Boost and restrained Mix into an overdriven amp stage. |
 
 ## Compression and gating
 
@@ -52,17 +52,17 @@ The effects below provide different clipping and tone-control arrangements. Mode
 
 | Effect | Controls | Starting point |
 | --- | --- | --- |
-| JCM800 Preamp | Volume | Begin low and raise Volume while checking the following amp or output stage. |
+| TLA800 Preamp | Volume | Begin low and raise Volume while checking the following amp or output stage. |
 | A-Clipper | Drive, Level, Tone | Start with low Drive and central Tone; use Level to match bypass. |
 | B-Boom | Drive, Gain | Raise Drive gradually, then balance Gain against the bypassed sound. |
 | Astrofuzz | Attack, Tone, Volume | Try low Attack, central Tone and a matched Volume for a restrained starting texture. |
 | Bit-Crusher | Bit Down, Downsampling, Gain, Level | Begin with mild bit/sample reduction and low Gain; increase one reduction control at a time. |
 | Cover-D | Bass, Treble, Volume, Mix | Start with a modest Mix and central tone controls, then balance Volume. |
-| Tube Screamer | Drive, Level, Tone | Use low Drive, central Tone and a slight Level lift ahead of an amp stage. |
+| Trinity Screamer | Drive, Level, Tone | Use low Drive, central Tone and a slight Level lift ahead of an amp stage. |
 | CST-BT1 | Attack, Level, Tone, Mix | Keep Mix modest while exploring Attack, then adjust Tone and Level. |
 | Distortion MK2 | High Freq, Freq, Gain, Mix | Start with low Gain and Mix; tune the two frequency controls to place the distortion in the mix. |
 | El-Distortion | Drive | Raise Drive from low until the desired saturation appears; balance the surrounding chain's level. |
-| MXR Distortion | Volume, Drive | Choose a moderate Drive and set Volume to match bypass. |
+| Distortion Plus | Volume, Drive | Choose a moderate Drive and set Volume to match bypass. |
 | Thick Distortion | Gain, Thickness, Volume | Start with low Gain and Thickness, increase Thickness by ear, then balance Volume. |
 
 ## Fuzz
@@ -77,9 +77,9 @@ Fuzz settings can change both sustain and the shape of note endings. Start at a 
 | Foxey Lady | Fuzz, Level | Choose moderate Fuzz and match Level to bypass. |
 | Fuzz Master | Level, Tone, Mix | Start with low Mix and central Tone, then increase the blend. |
 | Fuzz Drive | Distortion, Level, Mix | Use a low Distortion setting and modest Mix for a blended texture. |
-| Fuzzface | Fuzz, Level | Raise Fuzz gradually and use Level to maintain a consistent output. |
-| Fuzzface-FM | Drive, Fuzz, Input, Level | Keep Input and Drive restrained while exploring Fuzz, then balance Level. |
-| Fuzzface-RM | Fuzz, Level | Start with moderate Fuzz and compare the response to the other Fuzzface choices. |
+| Fuzz | Fuzz, Level | Raise Fuzz gradually and use Level to maintain a consistent output. |
+| Fuzz-FM | Drive, Fuzz, Input, Level | Keep Input and Drive restrained while exploring Fuzz, then balance Level. |
+| Fuzz-R | Fuzz, Level | Start with moderate Fuzz and compare the response to the other fuzz choices. |
 | Ruiner | Intensity, Level, Mix | Begin with low Intensity and Mix, then increase one at a time. |
 | Sustainer | Sustain, Volume | Raise Sustain until held notes last as wanted, then match Volume. |
 
@@ -123,7 +123,7 @@ BPM sets the rate of tempo-based modulation. Depth and Mix determine how promine
 | Mono Phaser | Phase sweep with Depth, BPM and Mix. | Use a slow rate and moderate Depth for a gradual sweep. |
 | Ring Modulator | Frequency multiplication texture with Mix and Freq. | Keep Mix low while sweeping Freq to find a useful metallic texture. |
 | Tremolo | Level modulation with Depth, BPM and Mix. | Set a song-related rate, then raise Depth until the pulse is clear without fully cutting the notes. |
-| Mono Univibe | Modulation with Depth, Feedback, BPM, Mix and Width. | Start with slow BPM, low Feedback and a modest Mix. |
+| Mono Vintage Vibe | Modulation with Depth, Feedback, BPM, Mix and Width. | Start with slow BPM, low Feedback and a modest Mix. |
 
 The virtual blocks are mono. An effect's Width control does not turn the block into a stereo send/return path; use the final physical stereo loop for a stereo pedal.
 
@@ -133,9 +133,9 @@ Assign a sweep parameter to an expression pedal for foot control. Set a usable M
 
 | Effect | Controls | Starting point |
 | --- | --- | --- |
-| GCB 95 | Volume, Hotpotz | Assign Hotpotz to expression, then narrow its range if either end is too extreme. |
-| Crybaby | Level, Wah, Mix | Assign Wah to expression and begin with a moderate Mix. |
-| Roland Wah | Fuzz, Wah, BPM, Mix | Start with low Fuzz and Mix, then choose a rate/sweep that fits the part. |
+| TLA95 | Volume, Hotpotz | Assign Hotpotz to expression, then narrow its range if either end is too extreme. |
+| Classic wah | Level, Wah, Mix | Assign Wah to expression and begin with a moderate Mix. |
+| Fuzz wah | Fuzz, Wah, BPM, Mix | Start with low Fuzz and Mix, then choose a rate/sweep that fits the part. |
 | Wah | Wah, Freq, Mix | Choose the frequency region first, then assign Wah to expression and adjust Mix. |
 
 ## Reverb
