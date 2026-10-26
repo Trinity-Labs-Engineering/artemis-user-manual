@@ -151,14 +151,70 @@ See [MIDI](#midi) for controller connections, channel settings and message setup
 - [ ] Explain where to set receive and transmit channels in Houston and on the connected equipment. Identify which settings are global or saved per preset.
 - [ ] State which MIDI connections are supported by the documented software version, including USB MIDI only if implemented.
 
-### Controlling Artemis from a MIDI controller
+### Controlling Artemis from a MIDI controller (MIDI In)
 
-- [ ] Document supported incoming Program Change (PC) messages and their preset mapping, including the numbering convention shown by Houston and the controller.
-- [ ] Document supported incoming Control Change (CC) messages and value ranges. Walk through one supported action, including assignment or MIDI learn if available, saving and testing.
+Controlling Artemis externally via MIDI is simple. Simply:
+1. Plug the MIDI Out / Thru port on the MIDI Controller to the Artemis' MIDI In Port with a 5-pin MIDI DIN cable
+2. Send messages from the Controller to the Artemis according to the mappings below
 
-### Controlling external MIDI pedals
+Artemis supports the following PC Messages into the device:
+
+| PC | Function |
+| --- | --- |
+| 0 | Toggle Tuner |
+| --- | --- |
+| 1 | Switch to Preset 1 (Jam Page) |
+| 2 | Switch to Preset 2 (Jam Page) |
+| 3 | Switch to Preset 3 (Jam Page) |
+| 4 | Switch to Preset 4 (Jam Page) |
+| 5 | Switch to Preset 5 (Jam Page) |
+| --- | --- |
+| 6 | Immitate Pressing Footswitch 1 |
+| 7 | Immitate Pressing Footswitch 2 |
+| 8 | Immitate Pressing Footswitch 3 |
+| 9 | Immitate Pressing Footswitch 4 |
+| 10 | Immitate Pressing Footswitch 5 |
+| --- | --- |
+| 11 | Immitate Releasing Footswitch 1 |
+| 12 | Immitate Releasing Footswitch 2 |
+| 13 | Immitate Releasing Footswitch 3 |
+| 14 | Immitate Releasing Footswitch 4 |
+| 15 | Immitate Releasing Footswitch 5 |
+| --- | --- |
+| 123 | Go To Jam Page |
+| 124 | Go To Preset Editor (Current Preset)|
+| 125 | Go To Home / Settings Carousel |
+| 126 | Go To Mixer |
+| 127 | Save on Current Page |
+
+Artemis publishes these as a scrolable list: (assets/images/midi-mapping.png)
+
+These (along with CC mappings for the device) are reachable from two places:
+1. The Preferences slide in the Carousel (assets/images/preferences-slide.png)
+2. The MIDI Out section from the Preset Editor (SCREENSHOT REQUIRED)
+
+Artemis also supports the following CC messages into the device:
+
+| CC | Value | Function |
+| --- | --- | --- |
+| 0 | n | Set Currently Selected Parameter To n/127 (Virtual Loop Editor) |
+| 1 | n | Load The n'th Preset On The Device
+| 61 | n | Load the n'th Song On The Device
+| 122 | n | Load the n'th Setlist On The Device
+
+# NOTE - ANY FURTHER cc COMMANDS SHOULD BE MADE pc
+
+This means that Artemis supports:
+- Up to 7,680 MIDI addressed Presets (CC 1 to 60, with value 0 to 127)
+- Up to 7,680 MIDI addressed Songs (CC 61 to 121, with value 0 to 127)
+- Up to 640 MIDI addressed Setlists (CC 122 to 127, with value 0 to 127) PENDING NOTE ABOVE
+
+### Controlling external MIDI pedals (MIDI Out)
 
 - [ ] Show how to configure supported outgoing messages, their destination channels, and the preset or footswitch actions that trigger them.
+
+
+
 - [ ] Walk through recalling an external pedal's preset, including any supported bank selection, message ordering or timing requirements.
 
 ### Clock, synchronisation and MIDI thru
