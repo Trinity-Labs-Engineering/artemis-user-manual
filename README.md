@@ -1,6 +1,10 @@
 # Artemis User Manual
 
-> **Drafting guide:** Work through the unchecked items below, replacing each with finished instructions and illustrations. For walkthroughs, include the starting setup, exact Houston actions, expected result, and what needs saving. Document features available in the manual's stated software version. Remove this guide and remaining drafting prompts before publication.
+**ArtemisOS / Houston v1.0.0**
+
+Start with [Quick Start](#quick-start) to connect your instrument and hear your first sound. Work through [My Pedalboard](#my-pedalboard), [Building a Preset](#building-a-preset) and [Playing Live](#playing-live) to prepare your performance setup. Keep the [Digital Effects Reference](EFFECTS.md) nearby when choosing effects.
+
+Screenshots show the example sounds and settings used in the walkthroughs. Your preset names, colours and library contents may differ.
 
 ## Table of Contents
 
@@ -26,12 +30,28 @@
   - [Utility presets](#utility-presets)
   - [Changing preset levels from a song](#changing-preset-levels-from-a-song)
   - [Stompbox Mode](#stompbox-mode)
+  - [Footswitches and LEDs](#footswitches-and-leds)
+  - [Creating and using a setlist](#creating-and-using-a-setlist)
+  - [Expression calibration and assignment](#expression-calibration-and-assignment)
 - [MIDI](#midi)
+  - [MIDI In](#controlling-artemis-from-a-midi-controller-midi-in)
+  - [MIDI Out](#controlling-external-midi-pedals-midi-out)
+  - [Clock and MIDI thru](#clock-synchronisation-and-midi-thru)
 - [Digital Effects](#digital-effects)
   - [Downloading NAMs from TONE3000](#downloading-nams-from-tone3000)
   - [Using NAMs in a preset](#using-nams-in-a-preset)
+  - [Importing NAMs and IRs over USB](#importing-nams-and-irs-over-usb)
+  - [Digital Effects Reference](EFFECTS.md)
 - [Maintenance and Troubleshooting](#maintenance-and-troubleshooting)
+  - [Updates](#updates)
+  - [Backups and recovery](#backups-and-recovery)
+  - [Troubleshooting](#troubleshooting)
+  - [Getting support](#getting-support)
 - [Reference](#reference)
+  - [Specifications](#specifications)
+  - [MIDI implementation](#midi-implementation)
+  - [Compatibility](#compatibility)
+  - [Glossary](#glossary)
 
 ## Introduction
 
@@ -62,7 +82,7 @@ Once connected, we recommend checking for software updates so you have the lates
 1. Connect Artemis to a Wi-Fi network.
 2. Open the **Updates** tab in Launchpad and select **Wi-Fi**.
 3. Follow the guided wizard to download and install the update. If prompted, delete a previously cached update bundle to make space. This cached bundle is safe to delete.
-4. When installation is complete, reboot Artemis when prompted to finish the update.
+4. When installation is complete, reboot Artemis when prompted. Complete the matching firmware update if Launchpad requests it, following any further restart prompts.
 
 ![Wi-Fi update page in Launchpad](assets/screenshots/wifi_updates.png)
 
@@ -72,11 +92,11 @@ When you have finished setup and any update has completed, open the **Apps** tab
 
 ### Houston Home Screen
 
-The screen below shows Houston's Home screen, this is a handy pop up that takes you to the most important places in Houston. You can access the home pop-up at any time by breifly pressing the *tl* logo  button on the left hand corner of the artemis. 
+The Home pop-up provides shortcuts to your pedalboard, presets, songs, setlists, tuner and settings. Open it with a brief press of the **tl** logo button on the left of Artemis. Tap a shortcut to continue, or press a footswitch to return to your previous screen.
 
 ![Houston Home screen](assets/screenshots/home_screen.png)
 
- The following sections introduce the main areas of Houston; when you are ready to connect your instrument and get your first sound, follow [Quick Start](#quick-start).
+The following sections introduce the main areas of Houston. To connect your instrument and get your first sound, follow [Quick Start](#quick-start).
 
 ### My Pedalboard
 
@@ -172,28 +192,54 @@ Presets can be shared between songs. Changes to a preset's mixer levels or expre
 
 ### Before you begin
 
-- [ ] List the supplied items and the cables, instrument, pedal and amplifier needed for the walkthrough.
-- [ ] Explain the power requirements and essential connection precautions before first use.
+For this walkthrough, use Artemis, its supplied **12 V DC, 2 A, centre-positive power adapter**, an instrument, an amplifier and two 6.35 mm (1/4-inch) TS audio cables. To add a pedal, you will also need the pedal's power supply and two patch cables.
+
+Turn down the amplifier before making or changing connections. Connect Artemis using its DC adapter; USB does not replace its power supply.
 
 ### First-time setup
 
-Follow [Launchpad Basics](#launchpad-basics) for initial setup, then [open Houston](#houston). Before building a preset, use [My Pedalboard](#my-pedalboard) to match the on-screen pedals to your physical connections.
+1. Connect the instrument to **IN1** and **OUT L** to the amplifier's instrument input. The rear-panel photograph labels IN1 as **IN A**.
+2. Connect the supplied power adapter and switch on Artemis.
+3. Follow [Launchpad Basics](#launchpad-basics) to connect to Wi-Fi and check for updates, then [open Houston](#houston).
 
-- [ ] Identify the starting screen and initial settings needed for the first-sound walkthrough.
+```mermaid
+flowchart LR
+    Instrument -->|TS audio cable| IN1["Artemis IN1"]
+    IN1 --> Route["Bus A"]
+    Route --> OUTL["Artemis OUT L"]
+    OUTL -->|TS audio cable| Amplifier["Amplifier input"]
+```
 
 ### Get your first sound
 
-- [ ] Walk through the simplest guitar-to-amplifier connection, including input selection, routing, output settings and level checks.
-- [ ] State what the user should hear and link to troubleshooting if there is no sound.
+1. Create a preset using **Add Preset → Create New Preset** from an empty song slot, then choose **Full**. See the [empty Preset Editor](#preset-editor-overview) for the layout.
+2. Set Path A's input circle to **1** and **BUS B** to **Off**.
+3. Leave the physical loops and virtual blocks unused or bypassed, including L6/L7. Set the left output selector to **MIX**.
+4. Open the mixer. Make sure Bus A is not muted and its level is not turned down to silence.
+5. Play the instrument and gradually raise the amplifier volume. You should hear the instrument through Artemis without added effects.
+6. Name the preset, leave the editor, and accept the save prompt.
+
+If there is no sound, follow the [troubleshooting checks](#troubleshooting) before adding effects.
 
 ### Add one pedal
 
-- [ ] Show one pedal connected to L1, enable the loop, and demonstrate the difference between active and bypassed states.
-- [ ] Add a simple cable diagram and a screenshot of the resulting route.
+1. Turn down the amplifier. Connect **L1 SND** to the pedal's input and the pedal's output to **L1 RTN**, then power the pedal.
+2. In [My Pedalboard](#my-pedalboard), create an entry for that pedal and assign it to **L1**.
+3. Return to the preset and drag the pedal from the library into the first position on Bus A.
+4. Set the pedal itself to an active effect setting, then raise the amplifier volume and play.
+5. Double-tap the pedal card to compare the loop enabled and bypassed. With the loop enabled, the signal passes through the pedal; with it bypassed, the signal skips the loop.
+6. Save the preset when leaving the editor, then recall it to check the setting.
+
+```mermaid
+flowchart LR
+    Send["L1 SND"] --> PedalIn["Pedal input"]
+    PedalIn --> PedalOut["Pedal output"]
+    PedalOut --> Return["L1 RTN"]
+```
 
 ### Shut down
 
-- [ ] Document the shutdown procedure and the indication that power can be disconnected.
+Save your work, turn down the amplifier, and open the Home pop-up with a brief press of the **tl** logo button. Tap **Shut down**. The Home screen also identifies holding the power button for **3 seconds** as a shutdown shortcut. Allow shutdown to complete before disconnecting power.
 
 ## Connections
 
@@ -221,20 +267,42 @@ The photograph labels the audio inputs **IN A** and **IN B**. These correspond t
 
 ### Example setups
 
-- [ ] Add a labelled mono guitar/pedal/amplifier wiring example.
-- [ ] Add a stereo example showing the L6/7 sends and returns and both main outputs.
-- [ ] Explain the routing settings needed for each example, alongside its cable diagram.
+For a mono instrument and amplifier, follow [Quick Start](#quick-start). Each mono pedal connects between one loop's SND and RTN sockets.
+
+For a stereo pedal in L6/L7, connect both channels as shown below. Feed OUT L and OUT R to the corresponding inputs of your stereo listening system.
+
+```mermaid
+flowchart LR
+    SL["L6/7 SND L"] --> IL["Stereo pedal input L"]
+    SR["L6/7 SND R"] --> IR["Stereo pedal input R"]
+    OL["Stereo pedal output L"] --> RL["L6/7 RTN L"]
+    OR["Stereo pedal output R"] --> RR["L6/7 RTN R"]
+    AL["Artemis OUT L"] --> Left["Listening system left input"]
+    AR["Artemis OUT R"] --> Right["Listening system right input"]
+```
+
+Enable the stereo loop in the preset. Use the output selectors to choose a mix feeding the stereo effect or separate left/right paths, as described in [Selecting outputs and using the stereo loop](#selecting-outputs-and-using-the-stereo-loop). For a two-input setup, feed IN1 and IN2 from the source's left and right outputs and choose those inputs for the corresponding buses.
 
 ### Expression, control and MIDI connections
 
-- [ ] Document compatible expression pedal wiring, resistance range and calibration procedure.
-- [ ] Explain CTRL contact wiring, electrical limits and supported switching modes with one compatible amplifier example.
+Connect an expression pedal to **EXP 1** or **EXP 2** with a TRS cable. Houston provides calibration, response curves and smoothing in **Expression / Control**. Follow [Expression calibration and assignment](#expression-calibration-and-assignment) before assigning it to a preset. Software calibration adjusts the usable travel; it does not change the socket's electrical wiring. For pedal wiring and compatibility advice, contact [support](#getting-support) with the pedal model.
 
-See [MIDI](#midi) for controller connections, channel settings and message setup.
+**CTRL 1** and **CTRL 2** provide isolated relay contacts through TS sockets for amplifier switching or footswitch emulation. Check that the amplifier accepts a relay-contact footswitch connection before connecting it. Ask support if its wiring or switching requirements are unclear. See [CTRL outputs](#ctrl-outputs) to save the required states with each preset.
+
+Use standard 5-pin DIN cables for **MIDI IN** and **MIDI OUT**. MIDI carries control messages, so an external MIDI pedal still needs its own audio send/return connections. See [MIDI connections and channel setup](#connections-and-channel-setup).
 
 ### USB connection
 
-- [ ] Document the available USB functions, supported hosts and connection steps, including the separate DC power requirement.
+The USB-C port connects Artemis as a device to a computer for file transfer. Use a data-capable cable and keep Artemis connected to its separate DC power supply. Connect the computer directly to Artemis; this workflow does not use a USB memory stick.
+
+1. Save your work in Houston and return to Launchpad.
+2. Open the relevant transfer guide: **NAM**, **IR**, **Recordings** or **Updates**. General transfer controls are also available alongside the file/storage controls.
+3. Connect the cable and enable USB transfer when prompted. The computer receives the **ARTEMIS** drive.
+4. Copy files into the folder specified by the guide, or copy recordings and backup archives to the computer.
+5. Wait for copying to finish, then safely eject the ARTEMIS drive on the computer.
+6. Finish the transfer in Launchpad so Artemis can use its storage again.
+
+While the computer owns the drive, Launchpad prevents local file operations and application launches that need that storage. Ejecting on the computer and finishing the transfer on Artemis are both required. This is a file-transfer connection; use the DIN ports for the MIDI procedures in this manual.
 
 ## Routing Basics
 
@@ -244,20 +312,39 @@ See [MIDI](#midi) for controller connections, channel settings and message setup
 
 ### Buses and loop assignment
 
-- [ ] Explain Bus A and Bus B, input selection, and the difference between series and parallel signal paths.
-- [ ] Show how the five mono loops are shared, including the L1–L3 assignment options and L4–L5 restriction.
-- [ ] Explain where the fixed L6/7 stereo loop sits and when to use it.
+A **bus** is a signal path through Artemis. Effects placed along the same bus process the signal in series: the output of one feeds the next. Bus A and Bus B can run in parallel, processing separate signals or two copies of the same input before the output stage.
+
+Choose each bus's source independently. One instrument can feed both buses by selecting the same input for each. Two instruments or a stereo source can use input 1 for one bus and input 2 for the other.
+
+| Loop | Assignment |
+| --- | --- |
+| L1–L3 | Either Bus A or Bus B. |
+| L4–L5 | Bus A only. |
+| L6/L7 | Fixed stereo loop after the bus processing and mixing stages. |
+
+The five mono loops are shared: a physical pedal can occupy one place in the route at a time. Moving its card changes the signal order without changing its cables. Use L6/L7 for a stereo pedal that should process the final left and right paths.
+
+For the editor controls and examples, see [Buses, inputs and outputs](#buses-inputs-and-outputs).
 
 ### Virtual block placement
 
-- [ ] Explain the two virtual blocks and their Pre, Mid and Post positions with one worked routing example.
-- [ ] Show how reordering and bypassing physical loops affect the slot positions, and what happens when both virtual blocks share a position.
+Virtual 1 and Virtual 2 insert digital processing into the analogue route. Each block contains its own pedal chain and optional amp and cab stages. Place a block at **Pre**, **Mid** or **Post** on either bus.
+
+On Bus A, Mid is after slot 2; on Bus B, it is after slot 1. Pre is before the first slot, and Post is after the last slot. These positions refer to the reordered chain, not the rear-panel loop numbers. Bypassed slots still occupy their positions.
+
+For example, OC-2 in A1 and Tube Screamer in A2 both feed a virtual block at Bus A Mid. Moving Tube Screamer to A3 places it after that block. If both virtual blocks share an insertion position, the signal passes through **Virtual 1 followed by Virtual 2**.
+
+See [Virtual block positions](#virtual-block-positions) for the full table and [Your first preset](#your-first-preset) for a worked example.
 
 ### Levels, mixing and bypass
 
-- [ ] Explain input buffers, pads, Bus B polarity, bus levels, mixing and output selection in terms of their audible effects.
-- [ ] Describe physical-loop and virtual-block bypass behaviour, including any interaction with effect tails.
-- [ ] Identify which routing and level settings belong to a preset and which are global.
+Use the mixer to balance Bus A and Bus B, and to set the input and master levels of each virtual block. **MIX** at an output selects the combined bus mix; separate output routing preserves the individual paths. Check both the route and the levels when changing between these arrangements.
+
+The input buffers can be switched together using the [input-buffer control](#disabling-input-buffers). Bypassing them changes the analogue input path and may change the level or tone. The output pads provide nominal **−6 dB** attenuation on the bus outputs before the mixer. Bus B's polarity control reverses that bus's signal polarity; compare it when combining two paths that sound unexpectedly thin.
+
+Bypassing a physical loop skips its send/return path. Bypassing a virtual block uses the analogue through-path at that insertion point; bypassing one effect inside the block affects only that effect. Check transitions while playing before relying on an effect tail during a performance.
+
+Save routing, bypass states, levels, expression assignments, CTRL states and the buffer choice with the preset. Song slot assignments are saved with the song. Stompbox Mode maintains its own bypass states and pedal order independently of songs.
 
 ## Building a Preset
 
@@ -448,11 +535,13 @@ The **warning-triangle icon** in the Preset Editor toggles the input buffers. Th
 
 ### Editing and managing presets
 
-Select a preset on the Jam Page and tap **Edit Preset** to reopen its routing page. Change its name with the pencil beside the title, adjust the route or effects, and accept the save prompt when leaving the editor to keep your edits.
+Open **Preset Manager → Library** to find a saved preset. Use the search and sorting controls to locate it, then choose **Edit** to open its route and settings. Save when prompted on leaving the editor to keep your changes.
 
-Treat the preset as the saved sound: its routing, effect settings, mixer levels, expression assignments, CTRL states and input-buffer choice belong together. Saving a song's slot layout is a separate action. Changes to shared preset levels and expression assignments also affect other songs using that library preset.
+Presets are shared library entries. Editing a preset used by several songs changes that sound in all of them. To make a variation for one song, use **Duplicate** in the library, edit and name the copy, then assign that copy to the song slot.
 
-- [ ] Document the preset library's duplicate, organise and delete controls, including overwrite and confirmation behaviour.
+The library supports folders for organising presets. Choose the destination folder before creating a preset, and use names and tags that make the sound easy to recognise. A duplicate is created alongside the original with a distinct name.
+
+The **trash** button deletes the library preset immediately. Archive your data before removing sounds you may need again. Check songs that use a deleted preset and replace their missing assignments; removing a preset from a song slot is a separate operation from deleting it from the library.
 
 ## Playing Live
 
@@ -571,10 +660,9 @@ Utility presets put performance actions into song slots. They use one of the sam
 | --- | --- |
 | **Tuner** | Open or close the tuner. |
 | **Recorder** | Open or close the recorder. |
-| **Mute** | Mute the audio. |
 | **Previous Song** | Load the previous song in the setlist. |
-| **Global Mute** | Mutes the audio coming out Artemis |
 | **Next Song** | Load the next song in the setlist. |
+| **Global Mute** | Toggle muting of Artemis's audio output. |
 | MIDI utility | Send the MIDI messages configured for that utility. |
 
 Use **Previous Song** and **Next Song** when performing songs in a setlist. The creation example reserves slot 5 for **Next Song**, so the first four footswitches select sounds and the fifth advances through the performance.
@@ -621,137 +709,173 @@ The illustrated Stompbox Mode page controls L1–L5. The fixed stereo L6/L7 loop
 
 ### Footswitches and LEDs
 
-On the Jam Page, the numbered slots identify the five footswitch assignments. In song view, a footswitch recalls its assigned preset or runs its utility; in Stompbox Mode, it toggles the corresponding pedal tile. See the [Jam Page overview](#jam-page-overview) and [Stompbox Mode](#stompbox-mode) for examples.
+In the default Jam layout, a short press selects the corresponding song slot. Press the already active sound preset again to open the [Invert Menu](#invert-menu). A hold triggers the switch's configured hold action; the default hold threshold is **1 second**.
 
-Pressing the already active preset's footswitch again opens the [Invert Menu](#invert-menu). While that menu is open, the footswitches perform the displayed menu actions; use footswitch **5 — Exit** to return to the song view.
+| Footswitch | Default hold action |
+| --- | --- |
+| 1 | Previous Song |
+| 2 | Next Song |
+| 3 | Toggle Tuner |
+| 4 | Toggle Recorder |
+| 5 | Exit |
 
-- [ ] Document additional press/hold actions and the meaning of each hardware LED state.
+Use **Footswitches** in the Home/settings carousel to review the normal, Invert Menu and hold assignments and adjust the hold duration. Check the displayed actions before a performance, especially on a device with existing settings.
+
+Use **LEDs** to choose brightness, animations and colours. With **All On**, occupied song slots show their colours and the active sound preset is white, with animation when enabled. **Active Only** lights the active sound slot; active utilities can also remain indicated. Empty slots are unlit. The Invert Menu uses its menu colours, and the Home pop-up lights all five LEDs white. Other pages use their on-screen footswitch labels, so follow those labels when browsing or editing.
+
+### Creating and using a setlist
+
+A setlist puts saved songs in performance order and chooses the starting preset for each song.
+
+1. Save the songs you want to use, then open **Setlist Manager → Create**.
+2. Enter a name, choose a tag or colour if wanted, and tap **Create Setlist**.
+3. Tap **Add Songs**. Choose the songs in the order you want them added, then confirm the selection.
+4. Use the handles beside the song rows to reorder them. You can drag a handle or tap a source and destination handle.
+5. Use the numbered preset buttons on each song row to choose its starting slot. Choose a sound preset that is ready for the beginning of that song.
+6. To remove a song from the setlist, tap its remove control and confirm with the second tap. This removes the setlist entry, not the saved song.
+7. Wait for **Setlists saved**. Setlist edits save automatically; if a save error appears, resolve it before leaving.
+8. Use the play control to start from the first song. On the Jam Page, use **Next Song** and **Previous Song** utilities or the Invert Menu to move through the setlist.
+
+Return through **Setlist Manager → Library** to reopen the setlist. Rehearse the song order and starting presets once after editing.
 
 ### Performance workflow
 
-Prepare your songs before playing: check the slot assignments, compare preset levels, and save your changes. During the example song, select **Intro → Verse → Pre-Chorus → Chorus** using slots 1–4, returning to any section's sound when it repeats. If slot 5 contains **Next Song**, use it when you are ready to move to the next song in the setlist.
+Before playing live, check the pedalboard wiring, match the levels of your song presets and test every song transition. Save preset changes and song slot changes, then reopen the setlist and start it from the beginning.
 
-- [ ] Add the setlist creation and song-ordering walkthrough with screenshots.
-- [ ] Describe what to expect during preset changes, including any audible transition or effect-tail behaviour.
+Preset recall can change relay routing, digital effects, levels, MIDI messages and amplifier control states. The transition depends on what changes between the two presets. Do not rely on delay or reverb tails carrying across a preset or block change without testing that exact transition. For sustained passages, try switching during a gap or keeping the required ambience in an external pedal whose route stays active.
+
+### Expression calibration and assignment
+
+#### Calibrate an expression pedal
+
+1. Connect the pedal to **EXP 1** or **EXP 2**, then open **Expression / Control** in the Home/settings carousel.
+2. Select the matching expression source and turn it on.
+3. Move the pedal through its full travel while watching **In**. Set **Min** and **Max** to the low and high values reached, keeping them different.
+4. Check that **Out** now covers the intended range from 0 to 127.
+5. Start with the **Linear** curve. Choose **Slow Start**, **Fast Start** or **S-Curve** if you want a different response.
+6. Adjust **Smooth** if the reading jitters. More smoothing makes movement steadier but less immediate.
+
+These source settings apply across presets. The parameter controlled by the pedal is assigned separately in each preset.
+
+#### Assign a virtual effect control
+
+For a simple example, use EXP 1 to vary the wet level of a pitch effect while keeping its dry level fixed.
+
+1. Open the preset, enter its virtual block and open the pitch effect's focus view.
+2. Select the **Wet** control to show its expression assignment panel.
+3. Choose **EXP 1**, then set **Minimum** to the dry-end wet level and **Maximum** to the strongest blend you want.
+4. Select **Normal** for increasing values as the expression input rises, or **Inverted** for the reverse direction.
+5. Play while moving the pedal and adjust the range to avoid unwanted level jumps.
+6. Leave the editor and save the preset when prompted.
+
+The assignment works while that preset is active, including on the Jam Page. Recalling another preset loads that preset's assignments, so the same pedal can control a different parameter or nothing at all. The screenshot in [Adding effects](#4-add-effects-inside-the-virtual-block) shows the expression panel beside a pitch effect.
+
+Mixer strips also offer expression assignment. See [Changing preset levels from a song](#changing-preset-levels-from-a-song); accept the mixer's save prompt to keep changed levels. Changes made through a song affect the shared library preset.
 
 ### External control
 
-- [ ] Show one expression assignment and explain its range and behaviour when presets change.
-- [ ] Show how supported MIDI and CTRL actions are assigned and triggered; link to the [MIDI chapter](#midi) and relevant connection instructions.
+Use preset MIDI messages to recall an external pedal's sound at the same time as an Artemis preset. Use a MIDI utility when a song slot should send a command without selecting another sound. The [MIDI chapter](#midi) explains both workflows.
+
+For an amplifier with a compatible relay footswitch input, set **CTRL 1/2** in the Preset Editor and save those states with the preset. Test the amplifier response at a low listening level before adding the preset to a setlist.
 
 ## MIDI
-Artemis supports MIDI In, Out, Thru, as well as Clock - allowing it to exist in a chain of midi capable devices - either as master, slave, or somewhere in-between.
+
+Artemis can receive commands from a controller, send commands to external pedals, and send or receive MIDI clock. Set up the cable direction and channels first, then test one message before building a complete performance layout.
 
 ### Connections and channel setup
 
-- [ ] Show an external controller connected to Artemis MIDI IN and an external pedal connected to Artemis MIDI OUT, with a labelled wiring diagram.
+```mermaid
+flowchart LR
+    Controller["Controller MIDI OUT"] -->|5-pin DIN| In["Artemis MIDI IN"]
+    Out["Artemis MIDI OUT"] -->|5-pin DIN| Pedal["External pedal MIDI IN"]
+```
 
-Artemis contains a publically available MIDI librarian (https://github.com/Morningstar-Engineering/openmidi - you can submit any missing devices from https://www.openmidi.com/), which allows you to set which MIDI capable devices are connected to your Artemis per Pedalboard configuration:
+To control Artemis, open **Preferences** in the Home/settings carousel. Set **MIDI IN MODE** to **Receive** and choose the same **MIDI IN CHANNEL** as your controller. **Off** disables mapped input control. **Thru** also receives mapped commands and forwards incoming MIDI; use it only when your downstream devices need those messages.
 
-1. Simply click Edit on the My Pedalboard slide of the Carousel
-2. Then click the blue MIDI button in the Navbar to open the MIDI Devices Configuration Page ![](assets/screenshots/midi/midi-devices.png)
-# NOTE: MAKE TEXT MUCH LARGER ON THIS PAGE
+![Preferences showing MIDI input mode, input channel and the MIDI map shortcut](assets/images/preferences-slide.png)
+
+To organise external MIDI pedals, open **My Pedalboard → Edit**, then tap the **blue MIDI icon**. Add each device with the **plus** button and set its channel to match the channel configured on the pedal itself.
+
+![MIDI device configuration for the selected pedalboard](assets/screenshots/midi/midi-devices.png)
+
+Give devices different receive channels when they need independent commands. Adding a device in Houston does not change that device's own settings.
 
 #### MIDI Librarian
 
-Clicking on the red Library button will open the MIDI Librarian, which is a searchable library of MIDI capable devices and their functions ![](assets/screenshots/midi/midi-librarian.png)
+The **Library** button opens the searchable MIDI Librarian. Find a device, review its listed functions, and favourite it for quick access through the **star** filter. Use those function definitions when building messages for devices assigned to your pedalboard.
 
-You can favourite any that you want to use with Artemis (seeing only these quickly through the yellow Star button in the Navbar), as well as assigning them to specific MIDI channels, which allows you to easily assign MIDI messages to them from a Preset or MIDI Utility.
+![MIDI Librarian with searchable device entries](assets/screenshots/midi/midi-librarian.png)
 
-You can add a device to the current board by clicking the orange Plus button in the top right corner of the Navbar
-
-#### Supported MIDI Connection Types
-At the moment, Artemis only supports MIDI through standard 5-pin DIN connectors, although we plan to add USB MIDI at some point in the future.
+The librarian uses the community Open MIDI library. Check the external device's manual if a command is missing or its behaviour differs from the listed entry.
 
 ### Controlling Artemis from a MIDI controller (MIDI In)
 
-Controlling Artemis externally via MIDI is simple. Simply:
-1. Plug the MIDI Out / Thru port on the MIDI Controller to the Artemis' MIDI In Port with a 5-pin MIDI DIN cable
-2. Send messages from the Controller to the Artemis according to the mappings below
+1. Connect the controller's MIDI OUT to Artemis MIDI IN.
+2. Set Artemis to **Receive** and match the receive channel to your controller.
+3. Open **Open MIDI map & help** from Preferences, or choose **Receive** from the Preset Editor's MIDI menu.
+4. Find the action or library item you want to control.
+5. Enter the displayed PC number, or the displayed CC number and value, in the controller.
+6. Send one message and check the result on Artemis.
 
-Artemis supports the following PC Messages into the device:
+![MIDI menu offering Send, Clock and Receive](assets/screenshots/midi/midi-send-clock-receive.png)
 
-| PC | Function |
-| --- | --- |
-| 0 | Toggle Tuner |
-| --- | --- |
-| 1 | Switch to Preset 1 (Jam Page) |
-| 2 | Switch to Preset 2 (Jam Page) |
-| 3 | Switch to Preset 3 (Jam Page) |
-| 4 | Switch to Preset 4 (Jam Page) |
-| 5 | Switch to Preset 5 (Jam Page) |
-| --- | --- |
-| 6 | Immitate Pressing Footswitch 1 |
-| 7 | Immitate Pressing Footswitch 2 |
-| 8 | Immitate Pressing Footswitch 3 |
-| 9 | Immitate Pressing Footswitch 4 |
-| 10 | Immitate Pressing Footswitch 5 |
-| --- | --- |
-| 11 | Immitate Releasing Footswitch 1 |
-| 12 | Immitate Releasing Footswitch 2 |
-| 13 | Immitate Releasing Footswitch 3 |
-| 14 | Immitate Releasing Footswitch 4 |
-| 15 | Immitate Releasing Footswitch 5 |
-| --- | --- |
-| 123 | Go To Jam Page |
-| 124 | Go To Preset Editor (Current Preset)|
-| 125 | Go To Home / Settings Carousel |
-| 126 | Go To Mixer |
-| 127 | Save on Current Page |
+![Artemis MIDI receive map with input settings and mapped actions](assets/screenshots/midi/midi-mapping.png)
 
-![Artemis publishes these as a scrolable list:](assets/screenshots/midi/midi-mapping.png)
+For a first test, load a song with a sound preset in slot 1 and send **PC 1**. This selects Jam slot 1. Artemis uses MIDI numbers **0–127**; a controller that displays programs as 1–128 may need its displayed number offset by one.
 
-These (along with CC mappings for the device) are reachable from two places:
-1. The Preferences slide in the Carousel![](assets/images/preferences-slide.png)
-2. The MIDI Out section from the Preset Editor (SCREENSHOT REQUIRED)
-
-Artemis also supports the following CC messages into the device:
-
-| CC | Value | Function |
-| --- | --- | --- |
-| 0 | n | Set Currently Selected Parameter To n/127 (Virtual Loop Editor) |
-| 1 | n | Load The n'th Preset On The Device
-| 61 | n | Load the n'th Song On The Device
-| 122 | n | Load the n'th Setlist On The Device
-
-# NOTE - ANY FURTHER cc COMMANDS SHOULD BE MADE pc. Any invert menu function should also be added as pc
-
-This means that Artemis supports:
-- Up to 7,680 MIDI addressed Presets (CC 1 to 60, with value 0 to 127)
-- Up to 7,680 MIDI addressed Songs (CC 61 to 121, with value 0 to 127)
-- Up to 640 MIDI addressed Setlists (CC 122 to 127, with value 0 to 127) PENDING NOTE ABOVE
+The live map lists addresses for your actual preset, song and setlist library. Recheck it after reorganising or deleting library items rather than relying on a remembered position. Recalling a library preset by CC makes it active; it does not replace a saved song slot. Use the Jam assignment actions in the [reference](#midi-implementation) when that is your intention, then save the song.
 
 ### Controlling external MIDI pedals (MIDI Out)
 
-Using Artemis to control external MIDI devices is simple. Simply:
-1. Plug the MIDI Out / Thru port on Artemis to the external Devices MIDI In Port with a 5-pin MIDI DIN cable
-2. Send messages from Artemis to the external device according to the devices internal MIDI mapping
+Connect Artemis MIDI OUT to the external pedal's MIDI IN. Set the pedal's receive channel first, then use that channel in Houston.
 
-There are two main ways to send MIDI messages from Artemis:
+#### Send messages with a preset
 
-1. From A Preset
-- Simply tap the Blue MIDI button on the navbar in the Preset Editor (SCREENSHOT REQUIRED), then click the Send button to open that Presets Send Menu
-- From the MIDI Send Table, you can send any number of MIDI messages (CC or PC) to connected devices by setting the channel, and message values
-![](assets/screenshots/midi/midi-send-table.png)
+1. Open the preset and tap the **MIDI icon** (the DIN socket symbol).
+2. Choose **Send**.
+3. Add a message row and select **PC** or **CC**.
+4. Set the destination channel and program/controller number. For a CC message, also set its value.
+5. Tap the row's **send arrow** to test it immediately.
+6. Add further messages as needed, then save the preset.
+7. Select another preset and return to this one to check the complete recall.
 
-2. From A MIDI Utility
-- When adding a Preset on the Jam Page, simply tap the highlighted Preset title text to swap to viewing the available Utility Presets
-- Then tap **Create MIDI Utility** in the top right to create your MIDI only Jam Page Slot
-![](assets/screenshots/midi/create-midi-utility.png)
+![Preset MIDI Send table with message rows and send controls](assets/screenshots/midi/midi-send-table.png)
 
-You can use the arrow button to test these from this page before saving them to the Preset or Utility.
+For example, if a pedal's manual assigns a sound to PC 12 on channel 2, enter that program and channel in a row. Use the pedal's documented numbering convention when translating its display into MIDI values.
+
+#### Send messages from a song utility
+
+In an empty song slot, tap **Add Preset**, switch the picker to **Utilities**, then choose **Create MIDI Utility**. Name the utility, add and test its message rows, and save it. Assign it to the song slot and save the song as well.
+
+![MIDI utility editor for creating a named set of messages](assets/screenshots/midi/create-midi-utility.png)
+
+A MIDI utility gives a footswitch its own command sequence. It is useful for an external pedal function that you want to trigger independently of your sound presets.
 
 ### Clock, synchronisation and MIDI thru
 
-- [ ] State whether MIDI clock can be sent or received, which functions follow it, and how the tempo source is selected where supported.
-- [ ] Document whether incoming messages can be forwarded to MIDI OUT, including any filtering, merging or routing options. Explain how to avoid sending messages back into the same route.
+Open the Preset Editor's **MIDI → Clock** page.
+
+To send clock, select **Send Clock**, set **Output tempo** between **20 and 360 BPM**, and tap **Start**. Use **Update** to change a running clock and **Stop** to stop it. The output uses standard MIDI clock at 24 pulses per quarter note. Configure the receiving pedal to follow external MIDI clock.
+
+To follow another device, connect its MIDI OUT to Artemis MIDI IN and select **Receive Clock**. Check for a detected BPM and **Clock locked**. **Waiting for MIDI clock** means no usable clock has been detected.
+
+An effect follows the clock only when an eligible tempo parameter is assigned to it. Open the effect's focus view, select its tempo control, choose **Clock** in the assignment panel, and select a subdivision. Only subdivisions within the parameter's supported range are available. Save the preset to keep the assignment. A manual tempo or expression assignment is a different source; receiving clock does not automatically synchronise every effect.
+
+For forwarding, select **Thru** as the MIDI input mode. Artemis can still act on its mapped incoming commands in this mode. Use one clock source in the chain and avoid a cable route that sends Artemis's output back to its own input; a MIDI loop can repeat commands or clock pulses.
 
 ### MIDI troubleshooting
 
-- [ ] Add checks for no response, the wrong preset being recalled, unexpected parameter changes and duplicate messages: cable direction, channels, message numbers, values and forwarding settings.
-- [ ] Describe any available MIDI activity indicators or monitoring tools and show how to test one message at a time.
+| Symptom | What to check |
+| --- | --- |
+| No response | Confirm OUT-to-IN wiring, input mode, matching channels and the command in the live receive map. Test a single message. |
+| The adjacent program loads | Check whether the controller displays programs as 0–127 or 1–128. |
+| The wrong library item loads | Reopen the map and copy both the CC number and value for the intended item. |
+| A footswitch remains logically held | Send its matching release PC after a simulated press. For simple preset selection, use PC 1–5. |
+| Unexpected parameter movement | Check expression assignments, including **EXP BT** if configured, and whether the controller sends CC 0. |
+| Duplicate commands or unstable tempo | Check Thru settings, remove circular routes and stop competing clock sources. |
+| Clock arrives but an effect does not follow | Assign **Clock** to that effect's eligible tempo control and check its subdivision. |
 
-Use the [MIDI implementation reference](#midi-implementation) for the complete list of supported messages and values.
+Use the Send table's arrows to test outgoing messages individually, the receive map to verify incoming addresses, and the Clock page to check tempo reception. The [MIDI implementation reference](#midi-implementation) lists the supported command ranges.
 
 ## Digital Effects
 
@@ -830,19 +954,58 @@ A NAM pedal occupies a virtual pedal position. Its position relative to the othe
 
 After choosing your captures and adjusting their levels, return to the main Preset Editor and accept the save prompt when leaving. Recall the preset again to check that the model selection and settings are retained. The downloaded capture and the preset that uses it are separate items: keep the capture available in the NAM library for presets that depend on it.
 
-- [ ] Add the detailed USB NAM and IR import walkthroughs, including accepted formats and file-management behaviour.
+### Importing NAMs and IRs over USB
+
+Use a computer to add captures or cabinet impulse responses you already own.
+
+1. Save your Houston work and return to Launchpad.
+2. Open **NAM** or **IR**, then choose **Import over USB**.
+3. Connect Artemis to the computer with a USB data cable and enable transfer when prompted.
+4. On the **ARTEMIS** drive, copy NAM captures into **Imports/NAM**, or impulse responses into **Imports/IR**.
+5. Wait for the copy to finish. Safely eject the drive on the computer, then finish USB transfer in Launchpad.
+6. Check **Manage library** in the NAM or IR tab. Newly copied files may say **Awaiting import**.
+7. Open Houston to import the files automatically, then select the capture or IR in your virtual block and save the preset.
+
+NAM imports use **.nam** files. The IR importer accepts **.wav**, **.wave**, **.aif**, **.aiff** and **.flac** files; use actual impulse responses rather than ordinary music files. A recognised file extension does not guarantee that a model or file is valid. If a file fails to load, keep its original download and report the model/file details to support.
+
+For an IR, open the virtual block's **Cabs** library and choose the imported response. An amp capture that already includes a cabinet may not need another cab stage; compare the sound with that stage bypassed.
+
+In Launchpad's **Manage library**, search for a file and use its rename or delete control. Deletion is permanent. The dialog lists known presets using that file and asks for confirmation where applicable. Renaming changes the path and may require you to select the file again in those presets; deleting it requires a replacement. Keep an archive before reorganising a library used by performance presets.
 
 ### Levels and processing limits
 
-- [ ] Explain digital input/output levels, clipping indicators and how to balance processed and analogue paths.
-- [ ] Describe processing limits, overload indications and practical ways to reduce DSP load.
-- [ ] Explain latency where it affects a user's routing choices, especially parallel paths.
+Set levels in signal order: the instrument and external pedals first, then the virtual-block input, effect/amp levels, virtual-block master and final bus mix. Play your strongest notes while adjusting. Leave headroom instead of setting every stage to its maximum.
+
+A digital clip indication means a monitored signal has reached its limit. Reduce the level feeding that stage; turning down a later master cannot undo distortion already introduced upstream. Intentional drive or NAM saturation is part of the effect, but harsh distortion on a clean preset is a reason to check the gain structure.
+
+When mixing analogue and processed paths, match their perceived levels with the mixer. Two copies of the same signal can become louder when combined, so recheck the final output after adding Bus B. Save the balanced levels with the preset.
+
+Each virtual block has up to five pedal positions plus its amp and cab stages. This layout limit does not guarantee that every combination of models has the same processing cost. Complex captures and chains require more processing. If a preset produces clicks, dropouts or loading errors, return to a simple working preset, remove unused stages and add effects back one at a time. Try a less demanding capture if the problem appears with a particular NAM. Give support the exact model files and preset if it persists.
+
+Digital processing also introduces latency. Mixing a direct analogue signal with a delayed copy can produce a thin or hollow sound. Compare each bus alone, then together. Bus B polarity inversion may improve the combination, but it does not remove the timing difference. If neither polarity sounds right, use a serial route or avoid blending that direct and processed pair.
 
 ### Effect reference
 
-- [ ] Explain common controls once, using the names displayed in Houston.
-- [ ] For each effect, give its purpose, distinctive controls, relevant limits and one useful example setting.
-- [ ] Link to separate detailed parameter documentation where needed.
+See the [Digital Effects Reference](EFFECTS.md) for the available pedal families, their controls and practical starting points, plus guidance for amp, NAM and cab stages.
+
+Common control names mean the following:
+
+| Control | What it changes |
+| --- | --- |
+| Drive, Fuzz, Sustain | The amount or character of distortion/sustain; behaviour depends on the model. |
+| Input, Input Gain | Level entering an effect or model. It can change how a drive or NAM responds. |
+| Level, Volume, Output, Master | Level at the named stage. Use it to balance the processed sound with bypass. |
+| Mix | Balance between dry and processed sound. |
+| Dry / Wet | Separate levels for the unprocessed and processed signals. |
+| Tone, Bass, Middle, Treble | Tonal balance; start near the middle of the control's travel and adjust by ear. |
+| BPM | Tempo for supported delay or modulation effects. Select it to configure manual tempo, expression or clock where offered. |
+| Feedback | How much processed signal feeds back into the effect. High values can build up strongly. |
+| Depth | Strength of a modulation sweep. |
+| Attack / Release | How quickly a dynamics effect responds and recovers. |
+| Threshold | Signal level at which a dynamics process begins to act. |
+| Highpass / Lowpass | Remove frequencies below / above the selected cutoff. |
+
+Control scales differ between effects. Use the values and units shown in the focus view rather than transferring the same number between unrelated models. Save the preset after editing.
 
 ## Maintenance and Troubleshooting
 
@@ -850,8 +1013,13 @@ After choosing your captures and adjusting their levels, return to the main Pres
 
 For the recommended update method, see [Wi-Fi Updates](#wi-fi-updates). To transfer an update from your computer, follow the USB instructions below.
 
-- [ ] Document how to check the installed software version.
-- [ ] Explain what to do if an update is interrupted or fails, using the verified recovery procedure.
+Open **Power** in Launchpad to find its **Version** and **Build** identifier. Include both in a support request, together with the ArtemisOS release or update bundle you installed. Application version labels and the ArtemisOS release number are separate.
+
+Keep the DC supply connected throughout installation. After a system update restarts Artemis, complete the matching firmware update if Launchpad prompts for it.
+
+If an update fails, open **View update**, record the error details and use **Reattempt update** after resolving the reported problem. A failed firmware stage offers **Retry Firmware Flash**; a required stage offers **Complete Firmware Update**. Follow the displayed sequence and restart when requested.
+
+If Launchpad reports a recovery after an interrupted update, read the recovery message before attempting the update again. If Artemis cannot return to Launchpad, or the same failure repeats, contact support with the bundle name and error details. Factory Reset removes user data; it is not a system-update repair procedure.
 
 #### USB Updates
 
@@ -880,31 +1048,68 @@ For the recommended update method, see [Wi-Fi Updates](#wi-fi-updates). To trans
 
    ![Finish the wizard and install the update](assets/screenshots/finish_update.png)
 
-8. When installation is complete, reboot Artemis when prompted to finish the update.
+8. When installation is complete, reboot Artemis when prompted. Complete the matching firmware update if Launchpad requests it, following any further restart prompts.
 
 ### Backups and recovery
 
-- [ ] Document the supported backup and restore methods, including what is and is not included.
-- [ ] Explain any available reset procedure and exactly which settings or files it removes.
+Launchpad's **Storage** tab provides **Archive**, **Restore** and **Factory Reset**. Save your work and return from Houston before using these controls. Finish any active USB transfer first so Artemis owns the storage.
+
+#### Create and copy a backup
+
+1. Open **Storage → Archive**.
+2. Enter a recognisable **Backup name**, such as a date and tour or project name.
+3. Tap **Create Archive** and wait for the success message.
+4. Enable USB transfer and connect the computer.
+5. Copy the ZIP archive whose name begins **artemis-houston-** from the root of the ARTEMIS drive to the computer.
+6. Safely eject the drive and finish USB transfer in Launchpad.
+
+The archive contains Houston's stored application data, including presets, songs, setlists, pedalboard data, imported NAM/IR libraries and application state stored with that data. It is a user-data backup, not an image of the operating system.
+
+The separate USB transfer area is **not** included. Copy **Recordings**, other samples, pending **Imports**, downloads and any other files you want to keep from that drive separately. Keep the archive on another device; a copy stored only on Artemis cannot protect against loss of the unit.
+
+#### Restore a backup
+
+**Restore replaces the current Houston user data with the selected archive.** Create a new archive first if you want to keep the current state.
+
+1. Copy an unmodified Artemis backup ZIP to the **root** of the ARTEMIS drive over USB. Keep its original archive filename.
+2. Safely eject the drive and finish transfer in Launchpad.
+3. Open **Storage → Restore** and select the archive.
+4. Confirm with **Restore Archive** and wait for completion.
+5. Reopen Houston and check your pedalboard, presets, songs and setlists before playing.
+
+A restore replaces Houston data; it does not restore separately copied recordings or pending import files. Transfer those back separately when needed.
+
+#### Factory reset
+
+**Factory Reset permanently deletes Houston's stored user data**, including its sound libraries and saved performance arrangements. It also clears application state stored in that data area. It does not reinstall ArtemisOS or erase the separate USB transfer area.
+
+Create an archive and copy it off the device first. Then open **Storage → Factory Reset**, read the warning and confirm **Factory Reset**. Wait for completion, reopen Houston and set up your pedalboard again, or restore a saved archive.
 
 ### Troubleshooting
 
-Complete each row with checks in the order a user should try them.
+Start with a low listening level and change one thing at a time. If a simple working preset passes audio, add the rest of the route back gradually to isolate the problem.
 
 | Symptom | Checks and resolution |
 | --- | --- |
-| No sound | TODO: Power, cables, input selection, routing, loop returns, mute and output levels. |
-| One side of a stereo setup is silent | TODO: Left/right wiring, stereo loop returns and output routing. |
-| Distortion or unexpected volume change | TODO: Signal levels, clipping, pads, mixing and preset settings. |
-| Thin or hollow sound when mixing buses | TODO: Polarity, digital latency and parallel-path interaction. |
-| Hum or noise | TODO: Cable, power and connected-equipment checks appropriate to the setup. |
-| Footswitch or expression control does not respond | TODO: Assignments, connection compatibility and calibration. |
-| MIDI or USB connection does not respond | TODO: Cables, host/device roles, supported functions and settings. |
-| Changes disappear after switching presets | TODO: Save behaviour and preset/global settings. |
+| No sound | Check DC power, instrument and output cables, then test the instrument directly into the amplifier. In Artemis, select the connected input, bypass unused loops, check the output choice and clear mixer/global mute. Raise levels gradually. An enabled loop needs a working send-to-pedal-to-return connection. |
+| One side of a stereo setup is silent | Check OUT L/R cables, both stereo pedal inputs/outputs and both L6/L7 returns. Check both output selectors and the bus levels. Bypass the stereo loop to help isolate its wiring. |
+| Distortion or an unexpected volume change | Compare a simple clean preset, reduce the level feeding the distorted stage and check clip indications. Review pedal outputs, virtual inputs/masters, bus mix, pads and expression assignments. |
+| Thin or hollow sound when mixing buses | Listen to each bus alone. Compare Bus B polarity, then consider the timing difference between analogue and digital paths. Try a serial route if the blend remains poor. |
+| Hum or noise | Test a short instrument-to-Artemis-to-amplifier route, then reconnect pedals one at a time. Check patch cables and pedal supplies. Do not remove protective mains earth connections. |
+| Footswitch does not perform the expected action | Check the current page, Invert Menu/Stompbox state and configured normal/hold actions. A utility slot performs its utility instead of selecting a sound. |
+| Expression pedal does not respond | Check the TRS connection, selected EXP source, enabled state, In meter and Min/Max calibration. Then check the active preset's parameter assignment and range. |
+| MIDI does not respond | Check OUT-to-IN cable direction, Receive/Thru mode, channel and the live map. Use the [MIDI troubleshooting table](#midi-troubleshooting) to isolate numbering, clock and duplicate-message problems. |
+| The ARTEMIS drive does not appear | Use a USB data cable, keep DC power connected and enable transfer in Launchpad. Try another computer port or cable. After use, eject on the computer and finish transfer on Artemis. |
+| A downloaded NAM or IR is missing | Complete the download or copy, finish USB transfer, check Manage library, then open Houston to import it. Check the file format and any import error. |
+| A preset reports a missing model | A referenced file may have been renamed or deleted. Select an available replacement and save, or restore the required library from your backup. |
+| Changes disappear after switching presets | Accept the Preset Editor or mixer save prompt for sound changes. Save the song for slot assignments. Wait for the setlist's saved status. Stompbox state is independent of song presets. |
+| Clicks or dropouts with a complex sound | Compare a simpler preset, reduce processing stages and test captures individually. Report persistent problems with the affected preset and model details. |
 
 ### Getting support
 
-- [ ] Add the support contact and list useful information to provide: hardware/software versions, wiring, preset, reproduction steps and screenshots.
+Email [contact@trinity-labs.co.uk](mailto:contact@trinity-labs.co.uk) or [raise a support ticket](https://trinity-labs.co.uk/support).
+
+Include your Artemis hardware revision and software version, a description or photograph of the wiring, the preset or song involved, and the steps that reproduce the issue. Add any on-screen error message and relevant screenshots. For an update problem, include the update bundle name and the last step that completed successfully.
 
 ## Reference
 
@@ -915,7 +1120,7 @@ Complete each row with checks in the order a user should try them.
 | Item | Specification |
 | --- | --- |
 | Dimensions (W × D × H) | Approx. 25.5 × 14.5 × 5.5 cm (10.0 × 5.7 × 2.2 in) |
-| Mass | Approx. 1.4 kg / 3lbs|
+| Mass | Approx. 1.4 kg (3 lb) |
 | Enclosure | 2.5 mm bead-blasted, anodised aluminium |
 | Side panels | 5 mm solid walnut |
 
@@ -968,22 +1173,84 @@ V1 and V2 can use the same position or different positions on either bus. When b
 
 | Item | Specification |
 | --- | --- |
-| Sample rate | 48 kHz (32bit) |
-| Reported round-trip latency per virtual block | 2.3 ms at 48 kHz, using 32 frames per period and 2 periods |
-| Best-case switching time, analogue-only changes | Approx. 30 ms; test conditions to be documented |
-| DSP/NAM preset switching time | Depends on the preset and DSP load; worst-case figure to be confirmed |
+| Sample rate | 48 kHz |
+| Digital audio word length | 32-bit |
+| Virtual-block latency | Digital processing adds latency; account for it when mixing parallel paths. |
+| Preset switching | Transition time depends on the routing, effects and models being recalled. Test your performance presets together. |
 
 Round-trip latency describes audio passing through a virtual block. Preset switching time describes the transition between presets and is a separate measurement.
 
 ### MIDI implementation
 
-- [ ] Add a table of supported messages, channels, value ranges and actions, including program changes, control changes and clock/thru behaviour where implemented.
+PC and CC numbers below use **0–127**. Channel messages use the receive channel selected in Preferences (**1–16**). Clock is a MIDI system message and does not use a channel. Enable **Receive** or **Thru** for mapped input control.
+
+#### Program Change messages
+
+| PC number | Action |
+| --- | --- |
+| 0 | Toggle tuner. |
+| 1–5 | Select Jam preset slot 1–5. |
+| 6–10 | Simulate pressing footswitch 1–5. |
+| 11–15 | Simulate releasing footswitch 1–5. Pair each with its corresponding press. |
+| 123 | Open the Jam Page. |
+| 124 | Open the active preset in the Preset Editor. |
+| 125 | Open the Home/settings carousel. |
+| 126 | Open the mixer. |
+| 127 | Save on the current page, where supported. |
+
+#### Control Change messages
+
+| CC number | Value | Action |
+| --- | --- | --- |
+| 0 | 0–127 | Drive the **EXP BT** expression source. It affects parameters assigned to that source; it is not a general “currently selected knob” command. |
+| 1–60 | 0–127 | Recall a library preset using the live map: up to 7,680 addresses. |
+| 61–121 | 0–127 | Recall a song using the live map: up to 7,808 addresses. |
+| 122 | 0–127 | Recall a setlist using the live map: up to 128 addresses. |
+| 123 | 0 | Toggle recorder. |
+| 123 | 1–5 | Remove the preset assignment from Jam slot 1–5. Save the song if you intend to keep the change. |
+| 123 | 6–10 | Put the active preset into Jam slot 1–5. Save the song to keep it. |
+| 124 | 0 | Toggle global loop bypass in the editor. |
+| 124 | 1–7 | Toggle physical loop L1–L7 bypass in the editor. |
+| 124 | 8 / 9 | Toggle Virtual 1 / Virtual 2 bypass in the editor. |
+| 124 | 11 / 12 | Toggle Virtual 1 amp NAM / IR bypass. |
+| 124 | 14 / 15 | Toggle Virtual 2 amp NAM / IR bypass. |
+| 127 | 0 | Request Bluetooth MIDI map synchronisation. |
+| 127 | 126 / 127 | Bluetooth MIDI heartbeat / acknowledgement; reserved for the connection protocol. |
+
+Editor commands require the relevant editor to be open. Unlisted values have no documented performance action. Library address capacity is not a promise about storage space; available space depends on your files.
+
+The live map is the authority for each saved item's address. Outgoing preset and utility messages support PC and CC with a destination channel, number and, for CC, value. See [Clock, synchronisation and MIDI thru](#clock-synchronisation-and-midi-thru) for clock and forwarding setup.
 
 ### Compatibility
 
-- [ ] Summarise confirmed expression pedal requirements, CTRL limits, USB host requirements and supported effect/model formats.
-- [ ] Link to the relevant setup instructions and distinguish tested devices from general compatibility requirements.
+| Connection or file | Requirement |
+| --- | --- |
+| Audio | Unbalanced TS connections. Use the labelled send and return for each loop channel. |
+| Expression | TRS expression connection, calibrated in **Expression / Control**. Ask support about model-specific wiring and electrical compatibility. |
+| CTRL | Isolated TS relay contacts for compatible amplifier/footswitch switching inputs. Ask support about the amplifier's switching requirements if uncertain. |
+| USB | A computer USB host and a data-capable cable; Artemis remains powered by its DC supply. Use the Launchpad transfer guides. |
+| MIDI | Standard 5-pin DIN connections for the wired procedures in this manual, with matching channels and message numbers. |
+| NAM | Valid **.nam** captures. Model complexity affects processing demand. |
+| IR | Impulse responses in **.wav**, **.wave**, **.aif**, **.aiff** or **.flac** format. |
+
+The pedals shown in the walkthrough illustrate loop setup. Their inclusion is not a compatibility list for unrelated expression or amplifier-control connections. Contact [support](#getting-support) with the exact device model when checking those connections.
 
 ### Glossary
 
-- [ ] Define loop, send, return, bus, slot, virtual block, preset, bypass, polarity, TS and TRS using consistent terminology.
+| Term | Meaning |
+| --- | --- |
+| Loop | A send/return connection that inserts an external effect into the signal path. |
+| Send / return | The send feeds the effect's input; the return receives its output. |
+| Bus | One of Artemis's two signal paths, Bus A or Bus B. |
+| Slot | A position in an effects chain or song layout. Its meaning depends on the page; a preset slot position is not a rear-panel loop number. |
+| Virtual block / virtual loop | One of the two digital processing chains that can be placed within a bus. |
+| Preset | A saved sound containing routing, effect and associated control settings. |
+| Song | A five-slot performance layout containing presets or utility actions. |
+| Setlist | Songs arranged in performance order. |
+| Bypass | Skip an effect or processing block while allowing the signal to continue. |
+| Dry / wet | Dry is the unprocessed signal; wet is the processed signal. |
+| Polarity | The positive/negative orientation of a signal. Reversing one path's polarity changes how it combines with another path. |
+| NAM | Neural Amp Modeler; a captured model of an amplifier or pedal loaded into a virtual chain. |
+| IR | Impulse response; a file used to reproduce a linear response, such as a cabinet and microphone response. |
+| MIDI PC / CC | Program Change and Control Change messages used to recall sounds or control functions. |
+| TS / TRS | Tip-sleeve and tip-ring-sleeve jack connections. Artemis's audio connections use TS; expression inputs use TRS. |
