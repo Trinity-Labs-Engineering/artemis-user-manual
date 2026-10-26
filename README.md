@@ -219,12 +219,28 @@ See [MIDI](#midi) for controller connections, channel settings and message setup
 - [ ] Show how supported MIDI and CTRL actions are assigned and triggered; link to the [MIDI chapter](#midi) and relevant connection instructions.
 
 ## MIDI
+Artemis supports MIDI In, Out, Thru, as well as Clock - allowing it to exist in a chain of midi capable devices - either as master, slave, or somewhere in-between.
 
 ### Connections and channel setup
 
 - [ ] Show an external controller connected to Artemis MIDI IN and an external pedal connected to Artemis MIDI OUT, with a labelled wiring diagram.
-- [ ] Explain where to set receive and transmit channels in Houston and on the connected equipment. Identify which settings are global or saved per preset.
-- [ ] State which MIDI connections are supported by the documented software version, including USB MIDI only if implemented.
+
+Artemis contains a publically available MIDI librarian (https://github.com/Morningstar-Engineering/openmidi - you can submit any missing devices from https://www.openmidi.com/), which allows you to set which MIDI capable devices are connected to your Artemis per Pedalboard configuration:
+
+1. Simply click Edit on the My Pedalboard slide of the Carousel
+2. Then click the blue MIDI button in the Navbar to open the MIDI Devices Configuration Page ![](assets/screenshots/midi/midi-devices.png)
+# NOTE: MAKE TEXT MUCH LARGER ON THIS PAGE
+
+#### MIDI Librarian
+
+Clicking on the red Library button will open the MIDI Librarian, which is a searchable library of MIDI capable devices and their functions ![](assets/screenshots/midi/midi-librarian.png)
+
+You can favourite any that you want to use with Artemis (seeing only these quickly through the yellow Star button in the Navbar), as well as assigning them to specific MIDI channels, which allows you to easily assign MIDI messages to them from a Preset or MIDI Utility.
+
+You can add a device to the current board by clicking the orange Plus button in the top right corner of the Navbar
+
+#### Supported MIDI Connection Types
+At the moment, Artemis only supports MIDI through standard 5-pin DIN connectors, although we plan to add USB MIDI at some point in the future.
 
 ### Controlling Artemis from a MIDI controller (MIDI In)
 
@@ -262,10 +278,10 @@ Artemis supports the following PC Messages into the device:
 | 126 | Go To Mixer |
 | 127 | Save on Current Page |
 
-Artemis publishes these as a scrolable list: (assets/images/midi-mapping.png)
+![Artemis publishes these as a scrolable list:](assets/screenshots/midi/midi-mapping.png)
 
 These (along with CC mappings for the device) are reachable from two places:
-1. The Preferences slide in the Carousel (assets/images/preferences-slide.png)
+1. The Preferences slide in the Carousel![](assets/images/preferences-slide.png)
 2. The MIDI Out section from the Preset Editor (SCREENSHOT REQUIRED)
 
 Artemis also supports the following CC messages into the device:
@@ -294,13 +310,15 @@ There are two main ways to send MIDI messages from Artemis:
 
 1. From A Preset
 - Simply tap the Blue MIDI button on the navbar in the Preset Editor (SCREENSHOT REQUIRED), then click the Send button to open that Presets Send Menu
-- From the MIDI Send Table (SCREENSHOT REQUIRED), you can send any number of MIDI messages (CC or PC) to connected devices by setting the channel, and message values
+- From the MIDI Send Table, you can send any number of MIDI messages (CC or PC) to connected devices by setting the channel, and message values
+![](assets/screenshots/midi/midi-send-table.png)
 
 2. From A MIDI Utility
 - When adding a Preset on the Jam Page, simply tap the highlighted Preset title text to swap to viewing the available Utility Presets
-- Then tap 'Add MIDI Utility' in the top right to add
+- Then tap 'Add MIDI Utility' in the top right to create your MIDI only Jam Page Slot
+![](assets/screenshots/midi/create-midi-utility.png)
 
-- [ ] Walk through recalling an external pedal's preset, including any supported bank selection, message ordering or timing requirements.
+You can use the arrow button to test these from this page before saving them to the Preset or Utility.
 
 ### Clock, synchronisation and MIDI thru
 
