@@ -13,6 +13,12 @@
 - [Connections](#connections)
 - [Routing Basics](#routing-basics)
 - [Building a Preset](#building-a-preset)
+  - [Preset Editor overview](#preset-editor-overview)
+  - [Your first preset](#your-first-preset)
+  - [Buses, inputs and outputs](#buses-inputs-and-outputs)
+  - [CTRL outputs](#ctrl-outputs)
+  - [Disabling input buffers](#disabling-input-buffers)
+  - [Editing and managing presets](#editing-and-managing-presets)
 - [Playing Live](#playing-live)
   - [Jam Page overview](#jam-page-overview)
   - [Invert Menu](#invert-menu)
@@ -22,6 +28,8 @@
   - [Stompbox Mode](#stompbox-mode)
 - [MIDI](#midi)
 - [Digital Effects](#digital-effects)
+  - [Downloading NAMs from TONE3000](#downloading-nams-from-tone3000)
+  - [Using NAMs in a preset](#using-nams-in-a-preset)
 - [Maintenance and Troubleshooting](#maintenance-and-troubleshooting)
 - [Reference](#reference)
 
@@ -209,6 +217,8 @@ Follow [Launchpad Basics](#launchpad-basics) for initial setup, then [open Houst
 
 Audio inputs, outputs and loop sends/returns use 6.35 mm (1/4-inch) TS connections. Expression inputs use TRS connections; CTRL outputs use TS connections.
 
+The photograph labels the audio inputs **IN A** and **IN B**. These correspond to **input 1 (IN1)** and **input 2 (IN2)** respectively in the preset walkthroughs. The input numbers identify sockets; Bus A and Bus B identify the signal paths you route them to.
+
 ### Example setups
 
 - [ ] Add a labelled mono guitar/pedal/amplifier wiring example.
@@ -251,19 +261,198 @@ See [MIDI](#midi) for controller connections, channel settings and message setup
 
 ## Building a Preset
 
+A preset brings together your physical pedal routing, virtual effects, mixer levels, MIDI messages and CTRL output states. Start with [My Pedalboard](#my-pedalboard) configured to match your wiring so that each physical pedal appears with the correct name and colour.
+
+**Creation order:** choose a template → select inputs and bus mode → arrange physical pedals → place and edit virtual blocks → check outputs and levels → set any CTRL or buffer options → name, save and test the preset.
+
+### Preset Editor overview
+
+The main Preset Editor shows the signal route from the input selectors on the left to the outputs on the right. **Bus A** is the yellow path; **Bus B**, when enabled, is the blue path. Physical pedal cards occupy positions along those paths, and the orange chip symbols mark the available virtual-block positions.
+
+![Empty Preset Editor showing Bus A, physical loop positions, virtual-block positions, input and output selectors, and the Bus B mode control](assets/screenshots/preset-editor/empty_preset_editor.png)
+
+| Part of the editor | Purpose |
+| --- | --- |
+| Input circles marked **1** or **2** | Select the rear-panel input feeding each path. Tap to cycle the choice. Input 1 is **IN1** and input 2 is **IN2**. |
+| Physical pedal cards | Represent connected pedals. Their position determines the order in which the signal reaches them. |
+| **Virtual 1** and **Virtual 2** | Digital processing blocks placed at Pre, Mid or Post on either bus. Each opens into its own effect chain. |
+| **BUS B: Off / Dry / Effects** | Choose whether the second path is unused, carries a dry signal, or contains effects. |
+| Output circles beside **OUT LEFT** and **OUT RIGHT** | Tap to cycle the output routing. Examples below show separate **L/R** routes and **MIX**. |
+| Green mixer controls | Adjust bus and virtual-loop levels. |
+| **CTRL** | Set the two relay control outputs for the preset. |
+| Warning-triangle icon | Toggle the input buffers. |
+| Orange drawer handle at the bottom | Open or close the library. |
+| Pencil beside the preset name | Rename the preset. |
+
+The on-screen gesture guide reads **Swipe to preview · Tap to edit · Hold to drag · Double tap to bypass**. Hold a card to move it, and double-tap a pedal or virtual block to change its bypass state. Tap a virtual block to edit the effects inside it; swipe across it to preview its pedals, amp and cab from the main routing page.
+
 ### Your first preset
 
-- [ ] Define a practical target sound and list the required pedals and connections.
-- [ ] Show how to create or open a preset using the exact Houston screen and control names.
-- [ ] Assign and reorder physical loops, then add and position a virtual effect.
-- [ ] Set the levels and check the result with each effect active and bypassed.
-- [ ] Name and save the preset, recall another preset, then return to verify that the intended settings were saved.
-- [ ] Include screenshots at the key steps and a final signal-path diagram.
+This walkthrough builds **OC-2 → Tube Screamer → a virtual delay/reverb chain** on Bus A. It uses the physical wiring from [My Pedalboard](#my-pedalboard): OC-2 in L1 and TS9 in L2. Connect your instrument to **IN1** and use **OUT L** for the listening setup. Leave Bus B off while building this first route.
+
+The later screenshots show additional options, including Bus B, amp models and the stereo CE-20. Add these once the basic route is working.
+
+#### 1. Create a preset and choose a template
+
+From a song's empty slot, tap **Add Preset → Create New Preset**. To work on an existing sound, select it on the Jam Page and tap **Edit Preset**.
+
+| Template | Starting point |
+| --- | --- |
+| **Full** | Physical pedal routing and virtual effects together. Use this for the walkthrough. |
+| **Virtual Only** | A virtual rig built from effects, an amp and a cab. |
+
+![Choose a Starting Template screen with Full and Virtual Only options](assets/screenshots/preset-editor/choose_a_template.png)
+
+Choose **Full**, check that Path A's input circle reads **1**, and set **BUS B** to **Off**. Check the output selection before listening; the example starts with **MIX** at both output selectors.
+
+#### 2. Add and arrange physical pedals
+
+Open the library drawer using the orange handle at the bottom. The **Physical** view shows the pedals configured in My Pedalboard, along with **Virtual 1** and **Virtual 2**. Use **My Pedalboard** in the drawer if the physical pedal names or connections need correcting.
+
+![Preset Editor library drawer showing Virtual 1, Virtual 2 and the physical pedals assigned to L1–L5](assets/screenshots/preset-editor/preset_editor_drawer.png)
+
+1. Drag **OC-2** into the first position on Bus A.
+2. Drag **TUBE SCREAMER** into the second position.
+3. Close the drawer to inspect the route, then play through the pedals.
+4. Double-tap each pedal card to compare its enabled and bypassed sound.
+
+![OC-2 and Tube Screamer placed in positions A1 and A2 on Bus A](assets/screenshots/preset-editor/drag_pedals_into_the_signal_chain.png)
+
+**A1, A2 and similar labels are positions in the preset's signal chain, not rear-panel loop numbers.** A pedal remains connected to its original physical loop when you move its card. Hold and drag a card to change its place in the chain.
+
+L1–L3 can move between Bus A and Bus B when Bus B is in **Effects** mode. L4–L5 remain on Bus A. A physical loop is shared between the buses, so place it on the path where it is needed. The alternative below puts DS-2 on Bus A, with Tube Screamer followed by OC-2 on Bus B.
+
+![Alternative routing with DS-2 on Bus A and Tube Screamer followed by OC-2 on Bus B](assets/screenshots/preset-editor/move_pedals_where_you_like.png)
+
+#### 3. Place a virtual block
+
+A **virtual block** is a digital processing chain inserted into an analogue bus. It is separate from the individual digital pedals, amp and cab inside it. The two blocks appear as **Virtual 1** and **Virtual 2** in the library and **Virtual Loop 1** or **Virtual Loop 2** when editing their contents.
+
+Drag a virtual block from the main library onto an orange chip position. For this walkthrough, place **Virtual 1** at **Mid** on Bus A, after OC-2 and Tube Screamer.
+
+| Position | Bus A | Bus B |
+| --- | --- | --- |
+| **Pre** | Before physical slot 1 | Before physical slot 1 |
+| **Mid** | After slot 2 | After slot 1 |
+| **Post** | After slot 5 | After slot 3 |
+
+Positions refer to slots in the reordered chain. Empty or bypassed positions do not move the Mid or Post insertion point. Both Post positions are before the final stereo loop. See [Virtual block positions](#virtual-block-positions) for the routing reference.
+
+![Virtual blocks placed at Mid and Post on Bus A, with the Pre chip position still available](assets/screenshots/preset-editor/drag_virtual_blocks_into_chain_pre_mid_or_post.png)
+
+You can place the second block on the same bus or on Bus B. The next example shows a virtual block at Mid on each bus, with DS-2 before the block on Bus B.
+
+![Virtual blocks at Mid on Bus A and Bus B](assets/screenshots/preset-editor/drag_virtual_blocks_into_bus_B_too.png)
+
+#### 4. Add effects inside the virtual block
+
+Tap the placed virtual block to open its editor. The screen has five pedal positions followed by **Add amp** and **Add cab**. Labels such as **V2-1** mean pedal position 1 inside Virtual Loop 2; they are not physical loop connections.
+
+![Empty Virtual Loop 2 with five pedal positions followed by Add amp and Add cab](assets/screenshots/preset-editor/empty_virtual_block_chain.png)
+
+1. Tap an empty pedal position or open the bottom drawer.
+2. Choose **Pedals**, then a category such as **Delay** or **Reverb**.
+3. Add an effect to the selected position. For the walkthrough, add **Echo** followed by **Freeverb**.
+4. Tap an effect to open its controls and adjust it while playing. Use its bypass control to compare the sound with and without processing.
+5. Hold and drag effect cards when you want to change their order.
+
+Check that the virtual block is enabled before listening. Use the power control at the top right of the virtual editor to change the whole block's bypass state.
+
+![Virtual effect library with Pedals, Amps and Cabs tabs and effect categories](assets/screenshots/preset-editor/virtual_editor_drawer.png)
+
+The effect's focus view provides its individual controls. **Double-tap a knob to reset it to its default value.** The expression assignment panel lets you choose **None**, **EXP1** or **EXP2** for the selected parameter. These assignments are saved with the preset and remain active on other pages, as indicated in the panel.
+
+![Pitch Shifter focus view with Detune, Wet and Dry controls and an expression assignment panel](assets/screenshots/preset-editor/pedal_focus_view.png)
+
+Use **Add amp** and **Add cab**, or the drawer's **Amps** and **Cabs** tabs, when your preset needs those stages. You can build a virtual effects chain without adding an amp or cab. For downloaded captures, follow [Downloading NAMs from TONE3000](#downloading-nams-from-tone3000) and [Using NAMs in a preset](#using-nams-in-a-preset).
+
+The expanded example below contains Pitch Shifter, Echo and Freeverb followed by a NAM amp and a cab. The arrows show the processing order from left to right.
+
+![Virtual Loop 1 containing Pitch Shifter, Echo and Freeverb, followed by a NAM amp and a cab](assets/screenshots/preset-editor/full_signal_chain_complete.png)
+
+Return to the main routing page using the back arrow. Swipe across a virtual block to preview its contents, or tap it to return to editing. Double-tapping the whole block bypasses that virtual chain; bypassing one effect inside it changes only that effect.
+
+![Main routing page showing pedal and amp previews inside the two virtual blocks](assets/screenshots/preset-editor/swipe_on_the_virtual_block_to_preview.png)
+
+#### 5. Check levels, name and save
+
+For the basic walkthrough, follow the route on screen: **IN1 → Bus A: OC-2 → Tube Screamer → Virtual 1 at Mid: Echo → Freeverb → mixer → OUT L**. Leave unused stages bypassed, including the fixed stereo loop if it is not part of this sound.
+
+1. Confirm that the blocks you want to hear are enabled, and that the input and output choices match your cables.
+2. Open the mixer with the **green sliders icon**. Compare the preset with its effects bypassed and adjust levels. See [Changing preset levels from a song](#changing-preset-levels-from-a-song) for the mixer controls.
+3. Set any required [CTRL outputs](#ctrl-outputs) and [input-buffer option](#disabling-input-buffers) before saving.
+4. Tap the pencil beside **New Preset** and give the sound a descriptive name.
+5. Leave the editor using the back arrow and **accept the save prompt** to keep the new preset or your changes to an existing one.
+6. Recall another preset, then return to this one. Check its routing, bypass states, effect settings and levels to confirm the saved sound is correct.
+
+You can now use the preset in a song. See [Creating a song](#creating-a-song) to arrange it alongside your other sounds.
+
+### Buses, inputs and outputs
+
+The buses are two signal paths through Artemis. Pedals along one bus process its signal in series. Enabling Bus B lets you run another path alongside Bus A, either from the same input or from the other input.
+
+#### Choosing the bus inputs
+
+Tap the input circle beside **IN PATH A** or **IN PATH B** to cycle between inputs **1** and **2**. These correspond to **IN1** and **IN2** on the rear panel. Choose the input with the connected signal; enabling Bus B does not by itself feed it from Bus A's input.
+
+For one instrument feeding parallel paths, select the same input on both buses. For two separate input signals, select input 1 for one bus and input 2 for the other.
+
+#### Choosing the Bus B mode
+
+| Mode | Behaviour | Typical use |
+| --- | --- | --- |
+| **Off** | Bus B is unused. | A single chain on Bus A. |
+| **Dry** | Bus B provides a path without its own effect chain. | Blend an unprocessed signal with Bus A. |
+| **Effects** | Bus B has positions for physical loops and virtual blocks. | Two processed paths, with either a shared input or separate inputs. |
+
+For a dry blend, select **Dry** and set both input circles to **1**. The screenshot shows OC-2 and Tube Screamer on Bus A, a direct blue path on Bus B, and **MIX** selected at both outputs. Use the mixer to set the balance between the paths. The fixed stereo effect sits after these paths, so an enabled effect there can still process the combined sound.
+
+![Dry Bus B sharing input 1 with the processed Bus A path and MIX selected at both outputs](assets/screenshots/preset-editor/wet_dry_split.png)
+
+#### Selecting outputs and using the stereo loop
+
+Tap the circles beside **OUT LEFT** and **OUT RIGHT** to cycle their routing choices. **MIX** selects the combined bus mix; the **L** and **R** selections shown below keep the left and right routes separate. Check both output selectors whenever you change from a mixed route to a stereo setup.
+
+The stereo example uses input **1** on Bus A and input **2** on Bus B, with **Effects** enabled and the outputs showing **L** and **R**. To feed both paths from one instrument instead, choose that instrument's input for both buses.
+
+![Two-path preset with separate inputs 1 and 2, Bus B in Effects mode and L/R output routing through the CE-20 stereo loop](assets/screenshots/preset-editor/full_stereo_preset.png)
+
+The small pedal cards at the right represent **L6/L7**, the fixed stereo loop. They stay at the end of the route rather than moving into the five reorderable positions. Connect a stereo pedal's left and right channels to the matching sends and returns, and check its bypass state when you want it included in the preset.
+
+### CTRL outputs
+
+Use **CTRL 1** and **CTRL 2** to switch compatible external equipment, such as an amplifier channel, as part of a preset. These are relay-contact control connections; their action depends on the connected equipment's footswitch input.
+
+1. Connect the appropriate CTRL socket to the compatible device's switching input. See [Rear Panel Connections](#rear-panel-connections) for the sockets and cable type.
+2. Tap **CTRL** in the Preset Editor's top bar.
+3. Tap **1** or **2** to set the required output state. In the screenshot, **2** is highlighted orange and **1** is inactive.
+4. Check the response of the connected device, then save the preset. **Both CTRL states are saved with the preset.**
+
+![CTRL menu open with control output 2 active and output 1 inactive](assets/screenshots/preset-editor/activate_control_outputs.png)
+
+For example, two presets can use different CTRL 1 states to select different channels on a compatible amplifier while also changing the effects route.
+
+### Disabling input buffers
+
+The **warning-triangle icon** in the Preset Editor toggles the input buffers. The setting applies to **both inputs together** and is saved with the preset.
+
+1. Tap the warning-triangle icon to disable the buffers.
+2. Read the **Disable input buffers?** dialog. Bypassing the buffers changes the analogue input path and may change the signal level or tone.
+3. Tap **Disable buffers** to proceed, or **Cancel** to keep the current state.
+4. Compare the sound and levels. Use the same triangle control to turn the buffers back on when needed.
+5. Save the preset to retain your chosen buffer state.
+
+![Input-buffer confirmation explaining that the setting affects both inputs and is saved with the preset](assets/screenshots/preset-editor/disable_input_buffers.png)
+
+**Older presets without a stored buffer setting leave the current buffer state unchanged.** Check the setting explicitly when updating an older preset.
 
 ### Editing and managing presets
 
-- [ ] Explain what saving captures, how unsaved changes are indicated, and what happens when another preset is recalled.
-- [ ] Document the available rename, duplicate, organise and delete operations, including overwrite or confirmation behaviour.
+Select a preset on the Jam Page and tap **Edit Preset** to reopen its routing page. Change its name with the pencil beside the title, adjust the route or effects, and accept the save prompt when leaving the editor to keep your edits.
+
+Treat the preset as the saved sound: its routing, effect settings, mixer levels, expression assignments, CTRL states and input-buffer choice belong together. Saving a song's slot layout is a separate action. Changes to shared preset levels and expression assignments also affect other songs using that library preset.
+
+- [ ] Document the preset library's duplicate, organise and delete controls, including overwrite and confirmation behaviour.
 
 ## Playing Live
 
@@ -568,9 +757,80 @@ Use the [MIDI implementation reference](#midi-implementation) for the complete l
 
 ### Using effects and models
 
-- [ ] Explain the distinction between a virtual block and the effects running inside it.
-- [ ] Show how to add, arrange, adjust and bypass the available digital effects.
-- [ ] If model or impulse-response loading is supported, document the accepted formats, import steps and file-management behaviour.
+A virtual block contains a chain of digital pedals followed by optional amp and cab stages. Place the block in the main route, then open it to add and edit its contents. Follow [Your first preset](#your-first-preset) for the effect-library and editing walkthrough.
+
+NAM captures are downloaded models that you can load into those virtual chains. Amp captures appear under **Amps → NAM**, while pedal captures appear under **Pedals → Neural**. Downloading a capture adds it to the library; you still need to select it in a virtual block and save the preset that uses it.
+
+### Downloading NAMs from TONE3000
+
+Use Launchpad's website browser to download NAM captures directly onto Artemis. Connect to Wi-Fi before starting. If you are working in Houston, save your preset first, then use **Return to Launchpad** in the Home pop-up.
+
+#### 1. Open TONE3000
+
+In Launchpad, select **Websites**, find **Tone 3000**, and tap **Open**.
+
+![Launchpad Websites tab showing the Tone 3000 NAM finder and Open button](assets/screenshots/tone3000-website/load_tone3000_website.png)
+
+Browse or search for a capture, then open its tone page. Check the description and capture type so you know whether you are downloading an amp, an amp with a cab, or a pedal. The illustrated Marshall tone is labelled **Amp + Cab Capture**.
+
+#### 2. Download a tone
+
+Tap **Download Tone** on the tone's page. If a further choice is offered, choose **Just download tone** to download the capture to Artemis.
+
+![TONE3000 tone page showing an Amp plus Cab NAM capture and the Download Tone button](assets/screenshots/tone3000-website/download_tone.png)
+
+Wait for the browser's download indicator to finish. The example below shows the download still in progress at **99%**; let it complete before leaving the browser.
+
+![Browser download progress for the Marshall tone, still at 99 percent](assets/screenshots/tone3000-website/click_just_download_tone.png)
+
+You can download pedal captures in the same way. The example below is a **Boss SD-1 Super Overdrive** pedal capture with multiple files in the download.
+
+![TONE3000 Boss SD-1 Super Overdrive pedal capture with a Download Tone button](assets/screenshots/tone3000-website/you_can_also_download_NAM_pedals.png)
+
+#### 3. Check the NAM library
+
+Return to Launchpad and open **NAM → Manage library** to browse downloaded captures. The NAM page also offers **Import over USB** for a guided transfer from a computer.
+
+![Launchpad NAM tab with Import over USB and Manage library options](assets/screenshots/tone3000-website/manage_NAMs_from_launchpad.png)
+
+Use **Find a capture** to search the library. The pencil beside a capture lets you rename it; **Delete** removes selected captures. A downloaded bundle may contain several capture files, so you may see multiple entries from one tone.
+
+![NAM library containing downloaded pedal and amp captures, including entries marked Awaiting import](assets/screenshots/tone3000-website/manage_NAMs.png)
+
+**Entries marked Awaiting import are imported automatically when Houston opens.** For these website downloads, you do not need to start the USB import workflow. Return to **Apps** and launch **Houston**, then select the capture in a virtual block as described below.
+
+### Using NAMs in a preset
+
+#### Loading an amp capture
+
+1. Open your preset and tap the virtual block where you want the amp.
+2. Tap **Add amp**, or open the virtual editor's library drawer and choose **Amps**.
+3. Select **NAM** to show the imported amp captures, then choose the one you want to use.
+4. Tap the amp card in the chain to open its controls.
+
+![Virtual Loop 1 library showing Amps and NAM selected with an imported Fender capture available](assets/screenshots/preset-editor/NAM_captures_show_up_in_the_library.png)
+
+The focus view shows the capture name, variant controls, **Input Gain** and **Output Gain**. Use Input Gain to adjust the signal feeding the model and Output Gain to balance its resulting level. Compare the sound while playing, then use the back arrow to return to the chain.
+
+![NAM amp focus view with a single variant, Input Gain, Output Gain and bypass control](assets/screenshots/preset-editor/NAM_focus_view_single_NAM.png)
+
+The example shows **Variant 1 / 1**, so that capture has only one available variant. When a capture contains several variants, use the arrows beside the variant name to choose between them.
+
+Check whether the chosen capture already includes a cabinet before adding a cab stage. The downloaded Marshall example is an **Amp + Cab Capture**; the Fender capture listed in the library is labelled **CAB FREE**. Choose the cab stage to suit the capture and your output setup.
+
+#### Loading a pedal capture
+
+Open a pedal position in the virtual chain, then select **Pedals → Neural** in the library drawer. Choose the imported pedal capture, place it in the chain, and tap it to edit its controls just as you would another virtual pedal.
+
+![Virtual pedal library with Neural selected and an imported Boss SD-1 capture available](assets/screenshots/preset-editor/NAM_pedals_appear_in_your_library.png)
+
+A NAM pedal occupies a virtual pedal position. Its position relative to the other digital pedals and the amp determines where it processes the signal.
+
+#### Save and check the sound
+
+After choosing your captures and adjusting their levels, return to the main Preset Editor and accept the save prompt when leaving. Recall the preset again to check that the model selection and settings are retained. The downloaded capture and the preset that uses it are separate items: keep the capture available in the NAM library for presets that depend on it.
+
+- [ ] Add the detailed USB NAM and IR import walkthroughs, including accepted formats and file-management behaviour.
 
 ### Levels and processing limits
 
