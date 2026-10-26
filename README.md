@@ -17,9 +17,51 @@
 
 ## Introduction
 
-- [ ] Explain what Artemis does and introduce the Houston interface.
-- [ ] State the hardware revision and software version covered by this manual.
-- [ ] Add an annotated front-panel overview identifying the touchscreen, footswitches, LEDs and power control.
+Artemis brings your effects pedals and built-in digital effects together in one pedalboard system. You can arrange your signal path, create presets, and recall sounds as you play. This introduction takes you through the startup screen, connecting to Wi-Fi, checking for updates, and opening Houston, the main application.
+
+### Launchpad Basics
+
+When you switch on Artemis, it opens Launchpad. This is where you manage device settings, including Wi-Fi, software updates and storage, and launch applications.
+
+Houston is the main application for setting up your pedalboard, working with effects and managing presets. You can open it from the **Apps** tab in Launchpad.
+
+![Launchpad Apps tab showing Houston ready to launch](assets/screenshots/launchpad_load.png)
+
+#### Connecting to Wi-Fi
+
+For your first setup, we recommend connecting Artemis to a Wi-Fi network. This makes it easy to download software updates and browse Neural Amp Modeler (NAM) models, which recreate the sound of amplifiers and pedals.
+
+Open the **Wi-Fi** tab in Launchpad and connect to your network.
+
+![Launchpad Wi-Fi settings](assets/screenshots/wifi_settings.png)
+
+### Artemis Software Updates
+
+Once connected, we recommend checking for software updates so you have the latest features and effects. Follow the Wi-Fi instructions below, or see [USB Updates](#usb-updates) in Maintenance and Troubleshooting to transfer an update from your computer.
+
+#### Wi-Fi Updates
+
+1. Connect Artemis to a Wi-Fi network.
+2. Open the **Updates** tab in Launchpad and select **Wi-Fi**.
+3. Follow the guided wizard to download and install the update. If prompted, delete a previously cached update bundle to make space. This cached bundle is safe to delete.
+4. When installation is complete, reboot Artemis when prompted to finish the update.
+
+![Wi-Fi update page in Launchpad](assets/screenshots/wifi_updates.png)
+
+### Opening Houston
+
+When you have finished setup and any update has completed, open the **Apps** tab in Launchpad. Find **Houston** and tap the orange play button to launch it.
+
+### Houston Home Screen
+
+The screen below shows Houston's Home screen. The following sections introduce the main areas of Houston; when you are ready to connect your instrument and get your first sound, follow [Quick Start](#quick-start).
+
+![Houston Home screen](assets/screenshots/home_screen.png)
+
+### My Pedalboard
+
+### Presets, Songs and Setlists
+
 
 ## Quick Start
 
@@ -30,8 +72,9 @@
 
 ### First-time setup
 
-- [ ] Describe the first power-on, any required setup screens, and how to recognise that Artemis is ready.
-- [ ] Add a screenshot of the initial Houston screen and identify the starting point for the walkthrough.
+Follow [Launchpad Basics](#launchpad-basics) for initial setup, then [open Houston](#opening-houston) to begin the walkthrough.
+
+- [ ] Identify the starting screen and initial settings needed for the first-sound walkthrough.
 
 ### Get your first sound
 
@@ -263,8 +306,39 @@ Use the [MIDI implementation reference](#midi-implementation) for the complete l
 
 ### Updates
 
-- [ ] Document the supported update method, prerequisites, version check and expected restart behaviour.
+For the recommended update method, see [Wi-Fi Updates](#wi-fi-updates). To transfer an update from your computer, follow the USB instructions below.
+
+- [ ] Document how to check the installed software version.
 - [ ] Explain what to do if an update is interrupted or fails, using the verified recovery procedure.
+
+#### USB Updates
+
+1. Download the latest ArtemisOS update bundle to your PC or Mac from [trinity-labs.co.uk/downloads](https://trinity-labs.co.uk/downloads).
+2. Connect Artemis to your computer using a USB cable. Open the **Updates** tab in Launchpad, select **USB**, and start the guided wizard.
+
+   ![USB update page in Launchpad](assets/screenshots/usb_updates.png)
+
+3. If prompted, delete a previously cached update bundle to make space for the new one.
+
+   ![Remove a cached update bundle](assets/screenshots/delete_old_bundle.png)
+
+4. Enable the USB connection when prompted. The **ARTEMIS** drive will appear on your computer.
+
+   ![Enable the USB connection](assets/screenshots/enable_usb.png)
+
+5. Copy the downloaded update bundle into the **Updates** folder on the **ARTEMIS** drive (`ARTEMIS/Updates`). Wait for the copy to finish.
+
+   ![Copy the update bundle to the Updates folder](assets/screenshots/copy_update_to_artemis.png)
+
+6. Safely eject the **ARTEMIS** drive from your computer, then continue in the wizard.
+
+   ![Safely eject the ARTEMIS drive](assets/screenshots/eject.png)
+
+7. Follow the remaining prompts to install the update.
+
+   ![Finish the wizard and install the update](assets/screenshots/finish_update.png)
+
+8. When installation is complete, reboot Artemis when prompted to finish the update.
 
 ### Backups and recovery
 
