@@ -202,7 +202,7 @@ Artemis also supports the following CC messages into the device:
 | 61 | n | Load the n'th Song On The Device
 | 122 | n | Load the n'th Setlist On The Device
 
-# NOTE - ANY FURTHER cc COMMANDS SHOULD BE MADE pc
+# NOTE - ANY FURTHER cc COMMANDS SHOULD BE MADE pc. Any invert menu function should also be added as pc
 
 This means that Artemis supports:
 - Up to 7,680 MIDI addressed Presets (CC 1 to 60, with value 0 to 127)
@@ -211,9 +211,19 @@ This means that Artemis supports:
 
 ### Controlling external MIDI pedals (MIDI Out)
 
-- [ ] Show how to configure supported outgoing messages, their destination channels, and the preset or footswitch actions that trigger them.
+Using Artemis to control external MIDI devices is simple. Simply:
+1. Plug the MIDI Out / Thru port on Artemis to the external Devices MIDI In Port with a 5-pin MIDI DIN cable
+2. Send messages from Artemis to the external device according to the devices internal MIDI mapping
 
+There are two main ways to send MIDI messages from Artemis:
 
+1. From A Preset
+- Simply tap the Blue MIDI button on the navbar in the Preset Editor (SCREENSHOT REQUIRED), then click the Send button to open that Presets Send Menu
+- From the MIDI Send Table (SCREENSHOT REQUIRED), you can send any number of MIDI messages (CC or PC) to connected devices by setting the channel, and message values
+
+2. From A MIDI Utility
+- When adding a Preset on the Jam Page, simply tap the highlighted Preset title text to swap to viewing the available Utility Presets
+- Then tap 'Add MIDI Utility' in the top right to add
 
 - [ ] Walk through recalling an external pedal's preset, including any supported bank selection, message ordering or timing requirements.
 
