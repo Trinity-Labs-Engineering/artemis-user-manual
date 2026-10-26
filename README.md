@@ -1013,7 +1013,7 @@ Control scales differ between effects. Use the values and units shown in the foc
 
 For the recommended update method, see [Wi-Fi Updates](#wi-fi-updates). To transfer an update from your computer, follow the USB instructions below.
 
-Open **Power** in Launchpad to find its **Version** and **Build** identifier. Include both in a support request, together with the ArtemisOS release or update bundle you installed. Application version labels and the ArtemisOS release number are separate.
+If you contact support about an update, include the **Version** and **Build** values shown under **Power** in Launchpad, the name of the update bundle you tried to install and any error message.
 
 Keep the DC supply connected throughout installation. After a system update restarts Artemis, complete the matching firmware update if Launchpad prompts for it.
 
