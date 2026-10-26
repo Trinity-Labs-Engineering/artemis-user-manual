@@ -48,7 +48,7 @@ Once connected, we recommend checking for software updates so you have the lates
 
 ![Wi-Fi update page in Launchpad](assets/screenshots/wifi_updates.png)
 
-### Opening Houston
+## Houston
 
 When you have finished setup and any update has completed, open the **Apps** tab in Launchpad. Find **Houston** and tap the orange play button to launch it.
 
@@ -61,6 +61,36 @@ The screen below shows Houston's Home screen, this is a handy pop up that takes 
  The following sections introduce the main areas of Houston; when you are ready to connect your instrument and get your first sound, follow [Quick Start](#quick-start).
 
 ### My Pedalboard
+
+My Pedalboard is how you tell Artemis what pedals are plugged in, so the Preset Editor matches your exact pedalboard colours and pedal names. This is the first thing you should do after booting into houston. You can go to My Pedalboard by either using the shortcut on the home screen popup or by finding it in the home carousel, which you can acess by pressing the Home icon found in the top navigation bar.
+
+Here is what the physical setup looks like which will be used for this example:
+
+![Physical Routing Configuration](assets/images/physical_setup.jpg)
+
+We have:
+- BOSS OC-2 plugged into L1
+- Ibanez TS9 plugged into L2
+- BOSS DS-2 plugged into L3
+- BOSS CE-20 plugged into the Stereo L6/L7 Slot
+
+You can find detailed information on all routing configurations in the [Routing and Connections](Connections) Section. A key thing to bare in mind though is that only the first three slots L1-L3 are parallel capable, so if you have any effects you definitely need on that Bus, just make sure they are plugged into the first three slots. It should't matter too much though as you can always swap the buses around in software either way!
+
+This is what My Pedalboard will look like on first boot, you can also select between different pedalboard configurations (maybe you are in more than one band and use a different pedalboard) by choosing the different pedalboards saved 1/2/3 etc. in the navigation bar.
+
+![Empty My Pedalboard](assets/screenshots/empty_my_pedalboard.png)
+
+The next thing to do is go and re-create what pedals you have in My Pedalboard. To do this, click on an empty pedal slot, or drag up the library from the bottom of the screen and click + add pedal, when the drawer opens.
+
+![Creating a pedal in My Pedalboard](assets/screenshots/create_a_new_pedal.png)
+
+Once you have created all of the pedals, they will appear in your library like this:
+
+![All pedals now added to the My Pedalboard Library](assets/screenshots/populate_mypedalboard_library.png)
+
+Next, you can simply drag the pedals into the correct slots, like how they are physically wired into the back of the Artemis. For Stereo pedals like the CE-20, simply just drag in the pedal twice, once into L6 and another time into L7. Don't get too caught up with the naming and look of the pedals, it is just to make the preset editor a bit easier and pretty, Artemis still does all of the routing behind the scenes for you.
+
+![Fully Setup My Pedalboard](assets/screenshots/fully_setup_mypedalboard.png)
 
 ### Presets, Songs and Setlists
 
@@ -375,7 +405,7 @@ Complete each row with checks in the order a user should try them.
 | Item | Specification |
 | --- | --- |
 | Dimensions (W × D × H) | Approx. 25.5 × 14.5 × 5.5 cm (10.0 × 5.7 × 2.2 in) |
-| Mass | Approx. 1.5 kg — to be confirmed |
+| Mass | Approx. 1.4 kg / 3lbs|
 | Enclosure | 2.5 mm bead-blasted, anodised aluminium |
 | Side panels | 5 mm solid walnut |
 
