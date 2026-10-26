@@ -54,9 +54,11 @@ When you have finished setup and any update has completed, open the **Apps** tab
 
 ### Houston Home Screen
 
-The screen below shows Houston's Home screen. The following sections introduce the main areas of Houston; when you are ready to connect your instrument and get your first sound, follow [Quick Start](#quick-start).
+The screen below shows Houston's Home screen, this is a handy pop up that takes you to the most important places in Houston. You can access the home pop-up at any time by breifly pressing the *tl* logo  button on the left hand corner of the artemis. 
 
 ![Houston Home screen](assets/screenshots/home_screen.png)
+
+ The following sections introduce the main areas of Houston; when you are ready to connect your instrument and get your first sound, follow [Quick Start](#quick-start).
 
 ### My Pedalboard
 
