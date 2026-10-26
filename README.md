@@ -5,6 +5,10 @@
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Houston](#houston)
+  - [Houston Home Screen](#houston-home-screen)
+  - [My Pedalboard](#my-pedalboard)
+  - [Presets, Songs and Setlists](#presets-songs-and-setlists)
 - [Quick Start](#quick-start)
 - [Connections](#connections)
 - [Routing Basics](#routing-basics)
@@ -62,35 +66,74 @@ The screen below shows Houston's Home screen, this is a handy pop up that takes 
 
 ### My Pedalboard
 
-My Pedalboard is how you tell Artemis what pedals are plugged in, so the Preset Editor matches your exact pedalboard colours and pedal names. This is the first thing you should do after booting into houston. You can go to My Pedalboard by either using the shortcut on the home screen popup or by finding it in the home carousel, which you can acess by pressing the Home icon found in the top navigation bar.
+My Pedalboard tells Artemis which pedals are connected to each physical loop. The names and colours you choose help you recognise those pedals in the Preset Editor. Set up My Pedalboard when you first open Houston, before building your presets.
 
-Here is what the physical setup looks like which will be used for this example:
+**Setup order:** check your connections → choose a pedalboard configuration → add pedals to the library → assign them to the matching loops → check the result before building a preset.
 
-![Physical Routing Configuration](assets/images/physical_setup.jpg)
+#### 1. Check your physical connections
 
-We have:
-- BOSS OC-2 plugged into L1
-- Ibanez TS9 plugged into L2
-- BOSS DS-2 plugged into L3
-- BOSS CE-20 plugged into the Stereo L6/L7 Slot
+Start with the pedals connected to Artemis and make a note of which loop each pedal uses. See [Connections](#connections) for send/return wiring and [Routing Basics](#routing-basics) for signal-path options.
 
-You can find detailed information on all routing configurations in the [Routing and Connections](Connections) Section. A key thing to bare in mind though is that only the first three slots L1-L3 are parallel capable, so if you have any effects you definitely need on that Bus, just make sure they are plugged into the first three slots. It should't matter too much though as you can always swap the buses around in software either way!
+**Plan your loop connections before setup:** L1–L3 can be assigned to either Bus A or Bus B; L4–L5 are restricted to Bus A. Connect any pedal you need on Bus B to L1, L2 or L3. L6/L7 form the fixed stereo loop.
 
-This is what My Pedalboard will look like on first boot, you can also select between different pedalboard configurations (maybe you are in more than one band and use a different pedalboard) by choosing the different pedalboards saved 1/2/3 etc. in the navigation bar.
+The walkthrough uses the following physical setup:
 
-![Empty My Pedalboard](assets/screenshots/empty_my_pedalboard.png)
+![Physical pedalboard used for the walkthrough](assets/images/physical_setup.jpg)
 
-The next thing to do is go and re-create what pedals you have in My Pedalboard. To do this, click on an empty pedal slot, or drag up the library from the bottom of the screen and click + add pedal, when the drawer opens.
+| Artemis loop | Connected pedal | Name used in My Pedalboard |
+| --- | --- | --- |
+| L1 | BOSS OC-2 | OC-2 |
+| L2 | Ibanez TS9 | TUBE SCREAMER |
+| L3 | BOSS DS-2 | DS-2 |
+| L4–L5 | Unused | Leave empty |
+| L6/L7 | BOSS CE-20, connected in stereo | CE-20 in both L6 and L7 |
 
-![Creating a pedal in My Pedalboard](assets/screenshots/create_a_new_pedal.png)
+#### 2. Open My Pedalboard and choose a configuration
 
-Once you have created all of the pedals, they will appear in your library like this:
+Open **My Pedalboard** using the shortcut in the Home pop-up. Alternatively, tap the **Home** icon in the top navigation bar to open the home carousel, find **My Pedalboard**, and tap **Edit**.
 
-![All pedals now added to the My Pedalboard Library](assets/screenshots/populate_mypedalboard_library.png)
+Choose the pedalboard configuration you want to set up using the numbered selector in the navigation bar. You can keep separate configurations for different physical pedalboards, such as boards you use with different bands. This walkthrough uses **My Pedalboard 1**.
 
-Next, you can simply drag the pedals into the correct slots, like how they are physically wired into the back of the Artemis. For Stereo pedals like the CE-20, simply just drag in the pedal twice, once into L6 and another time into L7. Don't get too caught up with the naming and look of the pedals, it is just to make the preset editor a bit easier and pretty, Artemis still does all of the routing behind the scenes for you.
+On first setup, the loop slots are empty:
 
-![Fully Setup My Pedalboard](assets/screenshots/fully_setup_mypedalboard.png)
+![My Pedalboard 1 with empty loop slots](assets/screenshots/empty_my_pedalboard.png)
+
+#### 3. Add your pedals to the library
+
+Create one library entry for each pedal in the example:
+
+1. Drag the library drawer up from the bottom of the screen and tap **+ Add Pedal**. You can also begin by tapping an empty pedal slot.
+2. Enter a **Pedal Name**, then choose a **Category** and **Colour**. Use a name and colour that make the pedal easy to recognise.
+3. Tap **Add** to add the pedal to your library.
+4. Repeat for the remaining pedals. Create the stereo CE-20 entry once; you will use it in both L6 and L7.
+
+![New pedal dialog with Pedal Name, Category, Colour and Add controls](assets/screenshots/create_a_new_pedal.png)
+
+Your library should now contain OC-2, TUBE SCREAMER, DS-2 and CE-20. The order in the library does not determine their loop assignments.
+
+![Pedal library containing the four example pedals](assets/screenshots/populate_mypedalboard_library.png)
+
+#### 4. Assign pedals to the matching loops
+
+Drag each pedal from the library into the slot that matches its physical connection:
+
+1. Drag **OC-2** into **L1**.
+2. Drag **TUBE SCREAMER** into **L2**.
+3. Drag **DS-2** into **L3**.
+4. Leave **L4** and **L5** empty.
+5. Drag **CE-20** into **L6**, then drag the same library entry into **L7** to represent both stereo channels.
+
+**Match the physical loop numbers here.** You will choose the order in which effects process your signal later in the Preset Editor. The pedal names and colours help identify each effect.
+
+![Completed My Pedalboard with OC-2 in L1, TUBE SCREAMER in L2, DS-2 in L3 and CE-20 in L6 and L7](assets/screenshots/fully_setup_mypedalboard.png)
+
+#### 5. Check your setup and continue
+
+Compare the on-screen assignments with the cables connected to Artemis. For this example, L1–L3 should contain the three mono pedals, L4–L5 should be empty, and CE-20 should appear in both L6 and L7.
+
+If you also use MIDI-controlled pedals, see [MIDI Librarian](#midi-librarian) for instructions on finding your devices in the MIDI library and adding them to the current pedalboard configuration.
+
+Once your pedalboard setup is complete, continue to [Quick Start](#quick-start) to get your first sound, or [Building a Preset](#building-a-preset) to arrange your effects and create your first preset.
 
 ### Presets, Songs and Setlists
 
@@ -104,7 +147,7 @@ Next, you can simply drag the pedals into the correct slots, like how they are p
 
 ### First-time setup
 
-Follow [Launchpad Basics](#launchpad-basics) for initial setup, then [open Houston](#opening-houston) to begin the walkthrough.
+Follow [Launchpad Basics](#launchpad-basics) for initial setup, then [open Houston](#houston). Before building a preset, use [My Pedalboard](#my-pedalboard) to match the on-screen pedals to your physical connections.
 
 - [ ] Identify the starting screen and initial settings needed for the first-sound walkthrough.
 
