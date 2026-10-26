@@ -14,6 +14,12 @@
 - [Routing Basics](#routing-basics)
 - [Building a Preset](#building-a-preset)
 - [Playing Live](#playing-live)
+  - [Jam Page overview](#jam-page-overview)
+  - [Invert Menu](#invert-menu)
+  - [Creating a song](#creating-a-song)
+  - [Utility presets](#utility-presets)
+  - [Changing preset levels from a song](#changing-preset-levels-from-a-song)
+  - [Stompbox Mode](#stompbox-mode)
 - [MIDI](#midi)
 - [Digital Effects](#digital-effects)
 - [Maintenance and Troubleshooting](#maintenance-and-troubleshooting)
@@ -137,6 +143,22 @@ Once your pedalboard setup is complete, continue to [Quick Start](#quick-start) 
 
 ### Presets, Songs and Setlists
 
+Houston organises your sounds into presets, songs and setlists:
+
+| Item | Purpose |
+| --- | --- |
+| Preset | A saved sound containing routing, virtual pedal and amp settings, MIDI messages and mixer levels. |
+| Song | A performance layout with up to five presets or utility actions, recalled using the five footswitches. |
+| Setlist | An ordered collection of songs for a performance. |
+
+**Build your sounds first, arrange them into songs, then organise your songs into a setlist.** A song can use descriptive preset names such as Intro, Verse and Chorus to make sound changes easy to follow while playing.
+
+The **Jam Page** is the song performance page. It lets you switch between the song's sounds and use utility actions such as the tuner, recorder, mute and MIDI functions. See [Jam Page overview](#jam-page-overview) for its controls and [Creating a song](#creating-a-song) for the complete setup walkthrough.
+
+For direct control of individual pedal loops, use [Stompbox Mode](#stompbox-mode). Its bypass states and pedal order are independent of songs.
+
+Presets can be shared between songs. Changes to a preset's mixer levels or expression assignments also affect the shared library preset, so check other songs that use it after editing.
+
 
 ## Quick Start
 
@@ -245,15 +267,182 @@ See [MIDI](#midi) for controller connections, channel settings and message setup
 
 ## Playing Live
 
+Use the Jam Page to prepare and perform songs. The walkthrough below starts with saved presets, places them into a five-slot song layout, and shows how to add utilities and balance your sounds.
+
+### Jam Page overview
+
+Open a saved song using **Open a song** in the Home pop-up, or open **Song Manager → Library** from the home carousel. The song opens on the Jam Page.
+
+![Jam Page showing the song Artemis Test, four presets and a Tuner utility, with Chorus selected](assets/screenshots/jam_page.png)
+
+The five numbered tiles correspond to Artemis's five footswitches. Tap a preset tile or press its corresponding footswitch to recall that sound. A utility tile performs its assigned action. In this example, slots 1–4 contain Intro, Verse, Pre-Chorus and Chorus, and slot 5 opens the tuner.
+
+**Press the already active preset's footswitch again to open the [Invert Menu](#invert-menu)** for quick access to song navigation, the tuner and the recorder.
+
+The selected preset tile is filled with its colour, and its slot number appears in the main display. Here, the red **Chorus** preset in slot **4** is selected. The saved song's name appears in the main display and top bar; the top bar can also show the tempo in BPM.
+
+| Control | Use |
+| --- | --- |
+| **Add Preset** in an empty slot | Choose a preset or utility for that slot. |
+| **Save as Song** / **Save Song** | Name and save a new song, or save changes to the current song. |
+| **Edit Song Name** | Change the song's name. Save the song afterwards. |
+| **Edit Preset** | Open the selected sound in the Preset Editor. |
+| Green sliders icon in the top bar | Open the selected preset's mixer to adjust levels and expression assignments. |
+| Yellow tuning-fork icon | Open the tuner. |
+| Red opposing-arrows icon | Open the recorder. |
+| Pedal icon at the lower right of the main display | Toggle Stompbox Mode. |
+| **×** on a slot | Remove that entry from the song layout. |
+
+Keep the slot arrangement consistent across songs where practical. For example, using slot 1 for your opening sound and slot 5 for a utility makes the layout easier to remember during a performance.
+
+### Invert Menu
+
+The Invert Menu gives the five footswitches a set of performance shortcuts, so you can reach song navigation, the tuner and the recorder without assigning them to slots in your song.
+
+1. Select a preset on the Jam Page using its footswitch.
+2. **Press that same footswitch again while the preset is active.** The five tiles change to the Invert Menu actions shown below.
+3. Press the footswitch for the action you want, or tap its on-screen tile.
+
+![Invert Menu with Previous Song on footswitch 1, Next Song on 2, Tuner on 3, Recorder on 4 and Exit on 5](assets/screenshots/invert_menu.png)
+
+| Footswitch | Action | Use |
+| --- | --- | --- |
+| 1 | **Previous Song** | Load the previous song in the setlist. |
+| 2 | **Next Song** | Load the next song in the setlist. |
+| 3 | **Tuner** | Open the tuner. |
+| 4 | **Recorder** | Open the recorder. |
+| 5 | **Exit** | Close the Invert Menu and return to the song's preset and utility tiles. |
+
+For example, if **Chorus** in slot **4** is active, press footswitch **4** again to open the menu. The footswitches now follow the menu labels: footswitch **3** opens the tuner, while footswitch **5** exits the menu. Use **Previous Song** and **Next Song** when working through a setlist.
+
+You can still assign [utility presets](#utility-presets) directly to song slots when you want an action available with a single press from the normal song view.
+
+### Creating a song
+
+Before starting, set up [My Pedalboard](#my-pedalboard) and save the sounds you need using the [Preset Editor](#building-a-preset). This example uses four presets named **Intro**, **Verse**, **Pre-Chorus** and **Chorus**; use your own saved presets if you prefer.
+
+#### 1. Create an empty song
+
+Open the home carousel, find **Song Manager**, and tap **Create**. Use **Library** when you want to open an existing song instead.
+
+![Song Manager in the home carousel, with Create and Library buttons](assets/screenshots/song_create_carousel.png)
+
+A new song opens with five empty **Add Preset** slots. The main display asks you to select or add a preset.
+
+![New song with five empty Add Preset slots](assets/screenshots/empty_song.png)
+
+#### 2. Add your sounds in performance order
+
+1. Tap **Add Preset** in the first slot.
+2. Find **Intro** in the preset picker and tap its card. Use **Search presets…** or the **Recent**, **Name** and **Tag** controls to find a sound. Choose **Create New Preset** if you need to make a new sound first.
+3. Repeat for the other slots, following the layout below.
+
+![Preset picker showing Chorus, Pre-Chorus, Verse and Intro library presets](assets/screenshots/select_a_preset_for_song.png)
+
+| Slot / footswitch | Example assignment |
+| --- | --- |
+| 1 | Intro |
+| 2 | Verse |
+| 3 | Pre-Chorus |
+| 4 | Chorus |
+| 5 | Next Song utility |
+
+**Choose the destination slot first, then choose its preset.** The order of cards in the preset picker is the library's display order; it does not determine the song layout.
+
+For slot 5, tap **Add Preset**, then tap the highlighted **Preset** heading to switch to the utility picker. Select **Next Song**. See [Utility presets](#utility-presets) for the other actions. If you are practising a single song, you could use **Tuner** in this slot instead, as shown in the Jam Page overview.
+
+![Song layout with Intro, Verse, Pre-Chorus, Chorus and Next Song assigned to slots 1–5](assets/screenshots/completed_song.png)
+
+#### 3. Name and save the song
+
+1. Tap **Save as Song**.
+2. Enter a descriptive **Song name** in the **Save this song?** dialog.
+3. Tap **Save** to keep the song.
+
+![Save this song dialog with a Song name field and Save button](assets/screenshots/make_sure_to_save_the_song.png)
+
+**Adding presets to the page does not finish saving the song.** Complete the save dialog before moving on. When editing an existing song, use **Save Song** to keep changes to its layout or name.
+
+#### 4. Check the saved song
+
+Open the song again from **Song Manager → Library**. Check that its name and slot assignments are correct, then select each sound in turn and play through the transitions. If one sound is too loud or quiet, use [Changing preset levels from a song](#changing-preset-levels-from-a-song).
+
+### Utility presets
+
+Utility presets put performance actions into song slots. They use one of the same five slots as your sound presets, allowing you to reach an action from a footswitch.
+
+1. Tap **Add Preset** in an empty song slot.
+2. Tap the highlighted **Preset** word in the picker heading to switch to **Select a Utility**.
+3. Browse the cards or use **Search utilities…**, then select the action you want.
+4. Save the song to keep the assignment.
+
+![Utility picker showing Tuner, Recorder, Previous Song and Next Song, with Create MIDI Utility at the top right](assets/screenshots/add_a_utility_preset_to_song.png)
+
+| Utility | Action |
+| --- | --- |
+| **Tuner** | Open or close the tuner. |
+| **Recorder** | Open or close the recorder. |
+| **Mute** | Mute the audio. |
+| **Previous Song** | Load the previous song in the setlist. |
+| **Global Mute** | Mutes the audio coming out Artemis |
+| **Next Song** | Load the next song in the setlist. |
+| MIDI utility | Send the MIDI messages configured for that utility. |
+
+Use **Previous Song** and **Next Song** when performing songs in a setlist. The creation example reserves slot 5 for **Next Song**, so the first four footswitches select sounds and the fifth advances through the performance.
+
+To make a MIDI utility, tap **Create MIDI Utility** at the top right of the picker. Give it a name, configure its MIDI messages, test them using the send-arrow controls, and save the utility. Add it to the desired song slot and save the song as well. See [Controlling external MIDI pedals](#controlling-external-midi-pedals-midi-out) for message setup and connections.
+
+### Changing preset levels from a song
+
+Use the mixer to balance the sounds in a song. Select the preset you want to adjust, then tap the **green sliders icon** in the Jam Page's top bar. Check the preset name at the top of the mixer before changing anything; the screenshot below is editing **Intro**.
+
+![Intro preset mixer showing virtual-loop inputs and masters, Bus A at minus 8 dB with EXP1 assigned, and Bus B](assets/screenshots/change_mixer_levels_and_expression_from_song.png)
+
+| Mixer strip | Level being adjusted |
+| --- | --- |
+| **VL-1 Input** / **VL-2 Input** | Input level for each virtual loop. |
+| **Bus A** / **Bus B** | Level of each signal bus. |
+| **VL-1 Master** / **VL-2 Master** | Master output level for each virtual loop. |
+
+1. Play through the selected preset and adjust the relevant level control while listening. The value beneath the control shows its setting in dB.
+2. Use the expression assignment control above a strip when you want an expression pedal to control that level. **NONE** indicates no assignment; the example shows **EXP1** assigned to **Bus A**.
+3. When the mixer detects changed levels, it prompts you to save. Confirm the save to keep your edits, and use the back arrow to return to the song.
+4. Select another preset to compare its loudness, then return to the edited preset and check the result. Repeat for the other sounds as needed.
+
+In the screenshot, Bus A is set to **−8.0 dB**. Choose levels that suit your pedals and the intended balance between sounds; this example value is not a target for every preset. Input and master controls affect different points in the virtual-loop signal path, so choose the control that matches the adjustment you intend to make.
+
+**These edits also change the shared library preset.** Mixer levels and expression assignments are not independent song-only settings. Other songs using that preset will use the changed settings too; check them after making an adjustment. Saving the song layout and accepting the mixer's save prompt are separate parts of the workflow.
+
+### Stompbox Mode
+
+Stompbox Mode gives you direct bypass control of the five reorderable loops. Use it when you want to switch individual pedals on and off or try a different pedal order.
+
+From the Jam Page, tap the **pedal icon** at the lower right of the main display. The page changes to **Stompbox Mode**, and the five tiles show the pedal loops instead of the song's presets and utilities.
+
+![Stompbox Mode showing OC-2, Tube Screamer, DS-2, Loop 4 and Loop 5, with physical loop labels L1–L5](assets/screenshots/stompbox_mode.png)
+
+1. Tap a pedal tile or press its corresponding footswitch to enable or bypass that loop. For example, use the **Tube Screamer** tile to switch the pedal connected to L2 in or out.
+2. Drag pedal tiles to change their order on **Bus A**, as described on the screen. The **L1–L5** labels identify the physical loops, so you can still recognise each connection after reordering.
+3. Use **Edit Pedalboard** if you need to update the pedal names or physical-loop assignments in My Pedalboard.
+4. Tap the pedal icon again to return to the song view.
+
+**Stompbox bypass states and pedal order are independent of songs.** They remain consistent as you move between songs; they are not saved as a separate stompbox layout for each song. Use presets when you want to recall a particular sound as part of a song.
+
+The illustrated Stompbox Mode page controls L1–L5. The fixed stereo L6/L7 loop is not one of these five tiles.
+
 ### Footswitches and LEDs
 
-- [ ] Explain how to assign footswitches, the supported press/hold actions, and the meaning of each LED state.
-- [ ] Walk through a useful assignment, such as bypassing a drive loop while keeping the rest of the preset active.
+On the Jam Page, the numbered slots identify the five footswitch assignments. In song view, a footswitch recalls its assigned preset or runs its utility; in Stompbox Mode, it toggles the corresponding pedal tile. See the [Jam Page overview](#jam-page-overview) and [Stompbox Mode](#stompbox-mode) for examples.
+
+Pressing the already active preset's footswitch again opens the [Invert Menu](#invert-menu). While that menu is open, the footswitches perform the displayed menu actions; use footswitch **5 — Exit** to return to the song view.
+
+- [ ] Document additional press/hold actions and the meaning of each hardware LED state.
 
 ### Performance workflow
 
-- [ ] Introduce the available performance views and demonstrate moving between sounds during a song.
-- [ ] Explain preset ordering and any supported bank, song or setlist organisation with one short example.
+Prepare your songs before playing: check the slot assignments, compare preset levels, and save your changes. During the example song, select **Intro → Verse → Pre-Chorus → Chorus** using slots 1–4, returning to any section's sound when it repeats. If slot 5 contains **Next Song**, use it when you are ready to move to the next song in the setlist.
+
+- [ ] Add the setlist creation and song-ordering walkthrough with screenshots.
 - [ ] Describe what to expect during preset changes, including any audible transition or effect-tail behaviour.
 
 ### External control
@@ -358,7 +547,7 @@ There are two main ways to send MIDI messages from Artemis:
 
 2. From A MIDI Utility
 - When adding a Preset on the Jam Page, simply tap the highlighted Preset title text to swap to viewing the available Utility Presets
-- Then tap 'Add MIDI Utility' in the top right to create your MIDI only Jam Page Slot
+- Then tap **Create MIDI Utility** in the top right to create your MIDI only Jam Page Slot
 ![](assets/screenshots/midi/create-midi-utility.png)
 
 You can use the arrow button to test these from this page before saving them to the Preset or Utility.
