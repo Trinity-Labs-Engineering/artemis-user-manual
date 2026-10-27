@@ -33,6 +33,13 @@ Screenshots show the example sounds and settings used in the walkthroughs. Your 
   - [Footswitches and LEDs](#footswitches-and-leds)
   - [Creating and using a setlist](#creating-and-using-a-setlist)
   - [Expression calibration and assignment](#expression-calibration-and-assignment)
+- [Common Settings and Preferences](#common-settings-and-preferences)
+  - [Enabling footswitch hold actions](#enabling-footswitch-hold-actions)
+  - [Footswitch settings](#footswitch-settings)
+  - [Preferences: screen, tuner and MIDI](#preferences-screen-tuner-and-midi)
+  - [LED settings](#led-settings)
+  - [Expression settings](#expression-settings)
+  - [Colour palettes](#colour-palettes)
 - [MIDI](#midi)
   - [MIDI In](#controlling-artemis-from-a-midi-controller-midi-in)
   - [MIDI Out](#controlling-external-midi-pedals-midi-out)
@@ -96,7 +103,7 @@ The Home pop-up provides shortcuts to your pedalboard, presets, songs, setlists,
 
 ![Houston Home screen](assets/screenshots/home_screen.png)
 
-The following sections introduce the main areas of Houston. To connect your instrument and get your first sound, follow [Quick Start](#quick-start).
+The following sections introduce the main areas of Houston. To connect your instrument and get your first sound, follow [Quick Start](#quick-start). For footswitch hold actions, brightness, tuner appearance and expression setup, see [Common Settings and Preferences](#common-settings-and-preferences).
 
 ### My Pedalboard
 
@@ -709,7 +716,7 @@ The illustrated Stompbox Mode page controls L1–L5. The fixed stereo L6/L7 loop
 
 ### Footswitches and LEDs
 
-In the default Jam layout, a short press selects the corresponding song slot. Press the already active sound preset again to open the [Invert Menu](#invert-menu). A hold triggers the switch's configured hold action; the default hold threshold is **1 second**.
+In the default Jam layout, a short press selects the corresponding song slot. Press the already active sound preset again to open the [Invert Menu](#invert-menu). A hold triggers the switch's configured hold action; the default hold threshold is **1 second**. To enable or change a hold action, follow [Enabling footswitch hold actions](#enabling-footswitch-hold-actions).
 
 | Footswitch | Default hold action |
 | --- | --- |
@@ -719,7 +726,7 @@ In the default Jam layout, a short press selects the corresponding song slot. Pr
 | 4 | Toggle Recorder |
 | 5 | Exit |
 
-Use **Footswitches** in the Home/settings carousel to review the normal, Invert Menu and hold assignments and adjust the hold duration. Check the displayed actions before a performance, especially on a device with existing settings.
+Use [Footswitch settings](#footswitch-settings) to review the normal, Invert Menu and hold assignments and adjust the hold duration. Check the displayed actions before a performance, especially on a device with existing settings.
 
 Use **LEDs** to choose brightness, animations and colours. With **All On**, occupied song slots show their colours and the active sound preset is white, with animation when enabled. **Active Only** lights the active sound slot; active utilities can also remain indicated. Empty slots are unlit. The Invert Menu uses its menu colours, and the Home pop-up lights all five LEDs white. Other pages use their on-screen footswitch labels, so follow those labels when browsing or editing.
 
@@ -755,7 +762,7 @@ Preset recall can change relay routing, digital effects, levels, MIDI messages a
 5. Start with the **Linear** curve. Choose **Slow Start**, **Fast Start** or **S-Curve** if you want a different response.
 6. Adjust **Smooth** if the reading jitters. More smoothing makes movement steadier but less immediate.
 
-These source settings apply across presets. The parameter controlled by the pedal is assigned separately in each preset.
+These source settings apply across presets. The parameter controlled by the pedal is assigned separately in each preset. See [Expression settings](#expression-settings) for a labelled screenshot of the calibration and response controls.
 
 #### Assign a virtual effect control
 
@@ -777,6 +784,163 @@ Mixer strips also offer expression assignment. See [Changing preset levels from 
 Use preset MIDI messages to recall an external pedal's sound at the same time as an Artemis preset. Use a MIDI utility when a song slot should send a command without selecting another sound. The [MIDI chapter](#midi) explains both workflows.
 
 For an amplifier with a compatible relay footswitch input, set **CTRL 1/2** in the Preset Editor and save those states with the preset. Test the amplifier response at a low listening level before adding the preset to a setlist.
+
+## Common Settings and Preferences
+
+Use these pages to set up the controls and display for the way you play. **To enable a footswitch hold action, open Footswitches, select a switch and choose a function in its Hold row.** Follow [Enabling footswitch hold actions](#enabling-footswitch-hold-actions) below.
+
+### Opening the settings pages
+
+1. Briefly press the **tl** logo button to open the Home pop-up.
+2. Tap **Settings**.
+3. Choose a page using the icons at the top right, or move through the pages with the orange side arrows. The settings **gear** at the top left is highlighted orange while you are in this area.
+
+| Top-right icon | Page | Common uses |
+| --- | --- | --- |
+| Power symbol | Power | Power and application controls. For shutdown, see [Shut down](#shut-down). |
+| Blue vertical sliders | Preferences | Screen brightness, tuner appearance and MIDI input settings. |
+| Green footswitch symbol | Footswitches | Press, Invert Menu and hold actions; hold duration. |
+| Yellow light bulb | LEDs | Footswitch LED brightness, behaviour, animation and colours. |
+| Cyan horizontal sliders | Expression / Control | Enable expression sources, calibrate their travel and adjust response. |
+| Purple palette | Palettes | Default colours for presets, songs, setlists, footswitch functions and physical pedals. |
+
+These settings apply across Houston and are saved as you change them. You do not need to save a song or preset to keep them. Expression **parameter assignments** are still saved with each preset; the Expression / Control page sets up the source that drives those assignments.
+
+### Footswitch settings
+
+Open **Settings → Footswitches** using the green footswitch icon. First choose the switch you want to edit using the numbered buttons on the left.
+
+![Footswitches settings with FS 1 selected, Hold Time set to 1.0 seconds, Invert off, Press assigned to Select Preset 1 and both Invert and Hold assigned to Previous Song](assets/screenshots/footswitch_settings.png)
+
+#### Enabling footswitch hold actions
+
+For example, to open the tuner by holding footswitch 3:
+
+1. Select **3** in the numbered column. Check that the large tile reads **FS 3**.
+2. In the bottom **Hold** row, use the left/right arrows to select **Toggle Tuner**.
+3. Set **Hold Time** at the top right to **1.0s** as a starting point. Use **−** or **+** to change it.
+4. Return to the normal **Jam Page**, with Stompbox Mode and the recorder closed.
+5. Hold footswitch **3** for at least the selected time. The tuner should open.
+
+Repeat for other switches with the actions you want. Choose **No Action** in a switch's Hold row to disable its hold action.
+
+**Hold Time sets the duration for all five footswitches; the Hold row sets the action for the selected switch.** The top-right **Invert** toggle controls the Invert Menu mode, not whether holds are enabled. You can use hold actions with Invert set to Off.
+
+#### Footswitch control labels
+
+| Label / position | What it does |
+| --- | --- |
+| **1–5**, beside the large selected-switch tile | Select which footswitch you are editing. Changing the selection does not copy assignments between switches. |
+| **Press**, top assignment row | Choose the selected switch's normal short-press action. On the Jam Page, pressing the already active sound preset still opens the Invert Menu. |
+| **Invert**, middle assignment row | Choose the short-press action used while the Invert Menu is active. Footswitch 5's Invert action stays **Exit** so you can leave the menu. |
+| **Hold**, bottom assignment row | Choose the action triggered by holding the selected switch. **No Action** disables that switch's hold function. |
+| **Hold Time**, upper right | Set how long a press must last to count as a hold: **0.5–10 seconds**, in 0.5-second steps. |
+| **Invert**, upper-right On/Off toggle | Switch between normal and Invert Menu operation. This is separate from editing an Invert assignment. |
+
+The screenshot selects **FS 1**: a normal press selects preset 1, while its Invert and Hold actions are both **Previous Song**. These are separate assignments even when they show the same function.
+
+Test song-navigation actions with a setlist loaded. If a hold seems inactive, check the selected switch's Hold assignment and duration, then test on the normal Jam Page. Stompbox Mode, the recorder, libraries and settings pages use their own footswitch controls. See [Footswitches and LEDs](#footswitches-and-leds) for the default performance assignments.
+
+### Preferences: screen, tuner and MIDI
+
+Open **Settings → Preferences** using the blue vertical-sliders icon.
+
+![Preferences page showing Screen Brightness at 100 percent, Classic tuner mode, Contex tuner model, MIDI In Mode set to Thru, MIDI In Channel 1 and Open MIDI map & help](assets/screenshots/preferences_page.png)
+
+#### Screen brightness
+
+Use **Screen Brightness** in the upper right to adjust the touchscreen's brightness. The percentage shows the current setting. Footswitch LED brightness is adjusted separately on the [LED settings](#led-settings) page.
+
+#### Tuner appearance
+
+| Label | What it does |
+| --- | --- |
+| **Tuner Mode**, upper left | Choose **Classic** or **Full Screen** for the tuner view. Full Screen opens the dedicated full-screen tuner. |
+| **Tuner Model**, below Tuner Mode | Use the arrows to choose **Classic**, **Contex** or **Helike** as the tuner presentation. |
+
+Open the tuner after changing these settings to compare the views. The screenshot uses **Classic** mode with the **Contex** model; mode and model are separate choices.
+
+#### MIDI input settings
+
+| Label | What it does |
+| --- | --- |
+| **MIDI In Mode → Off** | Disable mapped incoming MIDI control. |
+| **MIDI In Mode → Receive** | Let an external MIDI controller control Artemis. |
+| **MIDI In Mode → Thru** | Receive mapped commands and forward incoming MIDI to downstream equipment. |
+| **MIDI In Channel**, upper right | Use the arrows to choose channel **1–16**, matching the controller sending commands to Artemis. |
+| **Open MIDI map & help**, lower right | Open the receive map to find the PC or CC message for an action or library item. |
+
+For a first external-controller setup, choose **Receive**, match the MIDI channel and test one message. The screenshot's **Thru** selection is an example, not a requirement. Follow [MIDI connections and channel setup](#connections-and-channel-setup) for wiring and message setup.
+
+### LED settings
+
+Open **Settings → LEDs** using the yellow light-bulb icon. Select LED **1–5** on the left before changing its colour settings.
+
+![LED settings with LED 1 selected, Brightness at 12 percent, All On behaviour, animations on, Standard Color set to Match Preset and a green custom Invert Menu colour](assets/screenshots/led_settings.png)
+
+#### Brightness, behaviour and animations
+
+| Label, across the top | What it does |
+| --- | --- |
+| **Brightness** | Adjust the brightness of the five footswitch LEDs together. The screenshot's 12% is an example; choose a level visible in your playing environment. |
+| **Behavior** | **All On** shows occupied song slots, with the active sound preset indicated in white. **Active Only** lights the active sound slot; active utilities can also remain indicated. |
+| **Animations** | Enable or disable LED animations such as pulsing. This changes the visual feedback, not the footswitch assignment. |
+
+#### Standard and Invert Menu colours
+
+| Label / position | What it does |
+| --- | --- |
+| **1–5**, beside the selected-LED tile | Select the individual LED to edit. |
+| **Standard Color**, upper row | Choose **Match Preset** to follow the preset colour, or **Custom Hex** to choose a fixed colour. |
+| **Invert Menu**, lower row | Choose **Match Standard** to reuse the standard colour, or **Custom Hex** for a separate menu colour. |
+| Colour strip and hex field | When a custom colour is selected, use the strip or enter its hexadecimal colour value, such as **#00C46E**. |
+
+For a simple setup, leave Standard Color on **Match Preset** and give each Invert Menu action a recognisable colour. Check both the normal Jam Page and Invert Menu afterwards. The [Palettes page](#colour-palettes) controls shared default colour choices; this page configures individual hardware LEDs.
+
+### Expression settings
+
+Open **Settings → Expression / Control** using the cyan horizontal-sliders icon. The page heading may be shortened to **Expression** or **Expression / C…** on screen.
+
+![Expression settings with EXP 1 selected and on, Min 0, Max 127, Smooth 5 milliseconds, a Linear curve, In and Out meters and source diagnostic readings](assets/screenshots/expression_settings.png)
+
+#### Choose and enable an expression source
+
+Select **EXP 1** or **EXP 2** beside the meters to match the rear-panel socket. Turn that source **On** using the upper-right toggle. Each source has its own settings; check the source number above the toggle before editing.
+
+
+#### Calibration and response controls
+
+| Label / position | What it does |
+| --- | --- |
+| **Min / Max**, upper right | Set the low and high incoming values that correspond to the pedal's usable travel. Keep them different. |
+| **In**, left meter | Show the incoming value before calibration and response shaping. |
+| **Out**, right meter | Show the resulting control value after the source settings are applied. |
+| **Smooth**, horizontal slider | Average movement over the selected time. More smoothing reduces jitter but makes the response less immediate. |
+| **Curve**, arrow selector | Choose **Linear**, **Slow Start**, **Fast Start** or **S-Curve** to shape the response through the travel. |
+| **In / Avg / Samples / Jitter**, bottom readings | Show the incoming value, averaged value, recent sample count and variation between recent readings. Use these to check whether a source is sending a steady signal. |
+
+Move the pedal while watching In, set Min/Max to its measured endpoints, then check that Out covers the intended 0–127 range. Start with a Linear curve and modest smoothing. The screenshot shows no incoming readings yet; its **--** values and **0** samples are not a completed calibration.
+
+Enabling a source does not assign it to a sound control. Follow [Expression calibration and assignment](#expression-calibration-and-assignment) to calibrate it and assign a mixer or effect parameter, then save that assignment with the preset.
+
+### Colour palettes
+
+Open **Settings → Palettes** using the purple palette icon.
+
+![Palettes page editing Presets, with five numbered colour swatches, swatch 1 selected, a colour strip and the hexadecimal value #E63946](assets/screenshots/palettes_page.png)
+
+Use this page to choose default colours that make your sounds and controls easy to recognise.
+
+| Label / position | What it does |
+| --- | --- |
+| **Editing Defaults For**, with left/right arrows | Select **Presets**, **Songs**, **Setlists**, **Footswitch Functions** or **Real Pedals**. |
+| Numbered colour swatches | Select the colour entry to edit within that group. The selected swatch has a highlighted outline. |
+| Colour strip, along the bottom | Choose a colour for the selected entry. |
+| Hex field, bottom right | Enter an exact colour, such as **#E63946**, when you want to reuse it consistently. |
+
+To change a preset default, choose **Presets**, tap the required numbered swatch, then adjust the strip or hex value. Repeat for the other entries you want to change. The screenshot is editing preset colour **1**.
+
+Palettes supply default colour choices. To change an individual saved preset or pedal's colour, edit that item. To adjust hardware LED brightness or give one LED a custom colour, use [LED settings](#led-settings).
 
 ## MIDI
 
@@ -1097,6 +1261,7 @@ Start with a low listening level and change one thing at a time. If a simple wor
 | Thin or hollow sound when mixing buses | Listen to each bus alone. Compare Bus B polarity, then consider the timing difference between analogue and digital paths. Try a serial route if the blend remains poor. |
 | Hum or noise | Test a short instrument-to-Artemis-to-amplifier route, then reconnect pedals one at a time. Check patch cables and pedal supplies. Do not remove protective mains earth connections. |
 | Footswitch does not perform the expected action | Check the current page, Invert Menu/Stompbox state and configured normal/hold actions. A utility slot performs its utility instead of selecting a sound. |
+| Holding a footswitch does nothing | Open Settings → Footswitches, select the switch and choose a function in its Hold row instead of No Action. Check Hold Time and test on the normal Jam Page with Stompbox Mode and the recorder closed. Follow [Enabling footswitch hold actions](#enabling-footswitch-hold-actions). |
 | Expression pedal does not respond | Check the TRS connection, selected EXP source, enabled state, In meter and Min/Max calibration. Then check the active preset's parameter assignment and range. |
 | MIDI does not respond | Check OUT-to-IN cable direction, Receive/Thru mode, channel and the live map. Use the [MIDI troubleshooting table](#midi-troubleshooting) to isolate numbering, clock and duplicate-message problems. |
 | The ARTEMIS drive does not appear | Use a USB data cable, keep DC power connected and enable transfer in Launchpad. Try another computer port or cable. After use, eject on the computer and finish transfer on Artemis. |
